@@ -1,0 +1,11 @@
+{% from "_formhelpers.html" import render_field %}
+<title>AKU</title>
+<h1>Upload</h1>
+<form action="/upload/" method="POST" enctype="multipart/form-data">
+  <dl>
+    {{ form.hidden_tag() }}
+    {{ render_field(form.ste) }}
+    {{ render_field(form.conf) }}
+  </dl>
+  <p><input type=submit value=send>
+</form>
