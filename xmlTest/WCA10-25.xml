@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ConfigData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="membuffer.xsd">
+    <ASSEMBLY value="WCA10" />
+    <ColdMultiplier value="9" />
+    <PLLLoopBwMultiplier value="6" />
+    <FLOYIG value="14.6634E9" />
+    <FHIYIG value="17.4896E9" />
+    <PowerAmp FreqLO="794.000E9" VD0="1.8600" VD1="2.4950" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="799.000E9" VD0="2.1050" VD1="2.5200" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="802.000E9" VD0="2.0950" VD1="2.4650" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="810.000E9" VD0="1.7200" VD1="2.5100" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="818.000E9" VD0="1.7700" VD1="2.5200" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="826.000E9" VD0="1.7900" VD1="2.4900" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="834.000E9" VD0="1.9700" VD1="2.5100" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="842.000E9" VD0="1.6300" VD1="2.4800" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="850.000E9" VD0="1.5600" VD1="2.4300" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="858.000E9" VD0="1.2750" VD1="1.9650" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="866.000E9" VD0="1.1050" VD1="2.5200" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="874.000E9" VD0="1.3750" VD1="2.3500" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="882.000E9" VD0="1.2250" VD1="1.7600" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="890.000E9" VD0="1.0750" VD1="1.7350" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="893.000E9" VD0="1.1150" VD1="1.6300" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="898.000E9" VD0="0.9900" VD1="1.8700" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="906.000E9" VD0="0.7650" VD1="1.5800" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="914.000E9" VD0="0.9950" VD1="1.7600" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="922.000E9" VD0="0.8050" VD1="1.6150" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="930.000E9" VD0="0.9450" VD1="1.4400" VG0="-0.40" VG1="-0.40"/>
+    <PowerAmp FreqLO="938.000E9" VD0="0.9900" VD1="1.7400" VG0="-0.40" VG1="-0.40"/>
+    <OptimizationTargets FreqLO="868.0E9" PhotoMixerCurrent="-0.40E-3" />
+</ConfigData>

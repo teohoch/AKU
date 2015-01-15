@@ -1,0 +1,140 @@
+<?xml version="1.0" ?>
+<ConfigData>
+    <ASSEMBLY value="ColdCart8"/>
+	<MixerParams FreqLO="393.00E9" IJ01="44.79" IJ02="38.04" IJ11="49.88" IJ12="31.44" VJ01="1.33" VJ02="1.33" VJ11="1.33" VJ12="1.33"/>
+	<MixerParams FreqLO="396.00E9" IJ01="52.48" IJ02="33.33" IJ11="45.20" IJ12="45.90" VJ01="1.34" VJ02="1.34" VJ11="1.34" VJ12="1.34"/>
+	<MixerParams FreqLO="400.00E9" IJ01="42.45" IJ02="36.50" IJ11="52.61" IJ12="36.80" VJ01="1.35" VJ02="1.35" VJ11="1.35" VJ12="1.35"/>
+	<MixerParams FreqLO="404.00E9" IJ01="36.30" IJ02="29.39" IJ11="53.28" IJ12="38.56" VJ01="1.37" VJ02="1.37" VJ11="1.37" VJ12="1.37"/>
+	<MixerParams FreqLO="408.00E9" IJ01="46.43" IJ02="34.51" IJ11="50.36" IJ12="49.62" VJ01="1.39" VJ02="1.39" VJ11="1.39" VJ12="1.39"/>
+	<MixerParams FreqLO="412.00E9" IJ01="50.48" IJ02="45.43" IJ11="60.01" IJ12="40.85" VJ01="1.40" VJ02="1.40" VJ11="1.40" VJ12="1.40"/>
+	<MixerParams FreqLO="416.00E9" IJ01="51.96" IJ02="37.23" IJ11="57.74" IJ12="46.91" VJ01="1.42" VJ02="1.42" VJ11="1.42" VJ12="1.42"/>
+	<MixerParams FreqLO="420.00E9" IJ01="51.59" IJ02="38.55" IJ11="66.22" IJ12="43.63" VJ01="1.44" VJ02="1.44" VJ11="1.44" VJ12="1.44"/>
+	<MixerParams FreqLO="420.00E9" IJ01="51.59" IJ02="38.55" IJ11="66.22" IJ12="43.63" VJ01="1.44" VJ02="1.44" VJ11="1.44" VJ12="1.44"/>
+	<MixerParams FreqLO="424.00E9" IJ01="48.81" IJ02="41.10" IJ11="60.88" IJ12="37.82" VJ01="1.45" VJ02="1.45" VJ11="1.45" VJ12="1.45"/>
+	<MixerParams FreqLO="424.00E9" IJ01="48.81" IJ02="41.10" IJ11="60.88" IJ12="37.82" VJ01="1.45" VJ02="1.45" VJ11="1.45" VJ12="1.45"/>
+	<MixerParams FreqLO="428.00E9" IJ01="47.87" IJ02="43.02" IJ11="61.84" IJ12="40.41" VJ01="1.47" VJ02="1.47" VJ11="1.47" VJ12="1.47"/>
+	<MixerParams FreqLO="432.00E9" IJ01="47.31" IJ02="38.89" IJ11="64.31" IJ12="39.06" VJ01="1.49" VJ02="1.49" VJ11="1.49" VJ12="1.49"/>
+	<MixerParams FreqLO="436.00E9" IJ01="46.48" IJ02="37.04" IJ11="63.98" IJ12="41.60" VJ01="1.50" VJ02="1.50" VJ11="1.50" VJ12="1.50"/>
+	<MixerParams FreqLO="440.00E9" IJ01="44.53" IJ02="36.62" IJ11="69.73" IJ12="41.86" VJ01="1.52" VJ02="1.52" VJ11="1.52" VJ12="1.52"/>
+	<MixerParams FreqLO="444.00E9" IJ01="49.82" IJ02="40.28" IJ11="67.87" IJ12="48.14" VJ01="1.54" VJ02="1.54" VJ11="1.54" VJ12="1.54"/>
+	<MixerParams FreqLO="448.00E9" IJ01="47.85" IJ02="42.76" IJ11="72.10" IJ12="42.24" VJ01="1.55" VJ02="1.55" VJ11="1.55" VJ12="1.55"/>
+	<MixerParams FreqLO="452.00E9" IJ01="45.96" IJ02="38.22" IJ11="71.43" IJ12="46.21" VJ01="1.57" VJ02="1.57" VJ11="1.57" VJ12="1.57"/>
+	<MixerParams FreqLO="456.00E9" IJ01="48.36" IJ02="38.88" IJ11="75.03" IJ12="50.83" VJ01="1.59" VJ02="1.59" VJ11="1.59" VJ12="1.59"/>
+	<MixerParams FreqLO="456.00E9" IJ01="48.39" IJ02="40.76" IJ11="73.19" IJ12="44.41" VJ01="1.44" VJ02="1.44" VJ11="1.44" VJ12="1.44"/>
+	<MixerParams FreqLO="460.00E9" IJ01="48.39" IJ02="40.76" IJ11="73.19" IJ12="44.41" VJ01="1.45" VJ02="1.45" VJ11="1.45" VJ12="1.45"/>
+	<MixerParams FreqLO="464.00E9" IJ01="41.69" IJ02="37.83" IJ11="65.23" IJ12="45.07" VJ01="1.47" VJ02="1.47" VJ11="1.47" VJ12="1.47"/>
+	<MixerParams FreqLO="464.00E9" IJ01="41.69" IJ02="37.83" IJ11="65.23" IJ12="45.07" VJ01="1.47" VJ02="1.47" VJ11="1.47" VJ12="1.47"/>
+	<MixerParams FreqLO="468.00E9" IJ01="53.79" IJ02="48.51" IJ11="69.20" IJ12="47.91" VJ01="1.49" VJ02="1.49" VJ11="1.49" VJ12="1.49"/>
+	<MixerParams FreqLO="472.00E9" IJ01="48.97" IJ02="40.38" IJ11="58.91" IJ12="46.03" VJ01="1.50" VJ02="1.50" VJ11="1.50" VJ12="1.50"/>
+	<MixerParams FreqLO="476.00E9" IJ01="49.14" IJ02="40.09" IJ11="59.10" IJ12="39.22" VJ01="1.52" VJ02="1.52" VJ11="1.52" VJ12="1.52"/>
+	<MixerParams FreqLO="480.00E9" IJ01="49.72" IJ02="40.31" IJ11="55.24" IJ12="32.01" VJ01="1.54" VJ02="1.54" VJ11="1.54" VJ12="1.54"/>
+	<MixerParams FreqLO="484.00E9" IJ01="47.59" IJ02="40.67" IJ11="50.20" IJ12="35.64" VJ01="1.55" VJ02="1.55" VJ11="1.55" VJ12="1.55"/>
+	<MixerParams FreqLO="488.00E9" IJ01="47.42" IJ02="38.07" IJ11="46.10" IJ12="33.50" VJ01="1.57" VJ02="1.57" VJ11="1.57" VJ12="1.57"/>
+	<MixerParams FreqLO="492.00E9" IJ01="45.57" IJ02="34.13" IJ11="46.18" IJ12="30.20" VJ01="1.58" VJ02="1.58" VJ11="1.58" VJ12="1.58"/>
+    <MagnetParams FreqLO="393.000E9" IMag01="22.58" IMag02="21.67" IMag11="23.90" IMag12="15.99"/>
+    <PreampParamsPol0Sb1 FreqLO="393.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="396.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="400.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="404.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="408.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="412.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="416.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="420.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="424.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="428.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="432.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="436.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="440.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="444.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="448.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="452.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="456.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="460.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="464.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="468.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="472.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="476.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="480.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="484.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="488.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb1 FreqLO="492.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="393.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="396.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="400.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="404.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="408.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="412.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="416.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="420.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="424.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="428.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="432.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="436.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="440.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="444.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="448.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="452.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="456.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="460.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="464.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="468.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="472.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="476.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="480.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="484.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="488.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol0Sb2 FreqLO="492.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="393.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="396.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="400.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="404.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="408.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="412.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="416.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="420.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="424.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="428.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="432.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="436.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="440.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="444.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="448.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="452.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="456.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="460.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="464.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="468.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="472.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="476.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="480.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="484.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="488.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb1 FreqLO="492.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="393.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="396.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="400.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="404.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="408.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="412.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="416.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="420.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="424.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="428.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="432.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="436.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="440.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="444.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="448.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="452.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="456.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="460.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="464.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="468.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="472.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="476.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="480.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="484.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="488.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PreampParamsPol1Sb2 FreqLO="492.000E9" VD1="0.65" VD2="0.60" VD3="0.60" ID1="5.00" ID2="4.50" ID3="4.50" VG1="0.00" VG2="0.00" VG3="0.00"/>
+    <PolarizationOrientation PolXAngle="0.0000000000" PolYAngle="1.5707963268"/>
+</ConfigData>

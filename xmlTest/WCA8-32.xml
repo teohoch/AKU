@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<ConfigData>
+    <ASSEMBLY value="WCA8"/>
+    <ColdMultiplier value="6" />
+    <PLLLoopBwMultiplier value="3" />
+    <FLOYIG value="21.7305E9" />
+    <FHIYIG value="27.4583E9" />
+    <PowerAmp FreqLO="393.000E9" VD0="1.00" VD1="1.00" VG0="-0.45" VG1="-0.40"/>
+    <OptimizationTargets FreqLO="440.0E9" PhotoMixerCurrent="-0.40E-3" />
+</ConfigData>

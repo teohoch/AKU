@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="ConfigData">
+ <xs:complexType>
+  <xs:sequence>
+    <xs:element name="SN">
+      <xs:complexType>
+        <xs:attribute name="value" type="xs:integer" use="required"/>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="DET" maxOccurs="6" minOccurs="6">
+      <xs:complexType>
+        <xs:attribute name="ch"     type="xs:string" use="required"/>
+        <xs:attribute name="slope"  type="xs:double" use="required"/>
+        <xs:attribute name="icept"  type="xs:double" use="required"/>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="ATT" maxOccurs="4" minOccurs="4">
+      <xs:complexType>
+        <xs:attribute name="ch"      type="xs:string" use="required"/>
+        <xs:attribute name="att_0_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_0_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_1_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_1_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_2_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_2_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_3_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_3_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_4_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_4_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_5_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_5_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_6_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_6_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_7_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_7_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_8_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_8_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_9_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_9_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_10_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_10_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_11_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_11_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_12_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_12_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_13_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_13_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_14_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_14_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_15_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_15_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_16_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_16_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_17_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_17_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_18_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_18_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_19_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_19_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_20_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_20_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_21_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_21_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_22_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_22_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_23_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_23_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_24_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_24_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_25_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_25_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_26_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_26_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_27_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_27_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_28_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_28_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_29_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_29_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_30_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_30_5" type="xs:double" use="required"/>
+        <xs:attribute name="att_31_0" type="xs:double" use="required"/>
+        <xs:attribute name="att_31_5" type="xs:double" use="required"/>
+      </xs:complexType>
+    </xs:element>
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+</xs:schema>
+

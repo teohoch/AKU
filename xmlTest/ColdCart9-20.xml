@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<ConfigData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="membuffer.xsd">  
+	<ASSEMBLY value="ColdCart9"/>  
+	<MixerParams FreqLO="614.000E9" IJ01="34.73" IJ02="0.00" IJ11="30.60" IJ12="0.00" VJ01="1.95" VJ02="0.00" VJ11="2.01" VJ12="0.00"/>  
+	<MixerParams FreqLO="622.000E9" IJ01="35.19" IJ02="0.00" IJ11="33.10" IJ12="0.00" VJ01="1.92" VJ02="0.00" VJ11="2.04" VJ12="0.00"/>  
+	<MixerParams FreqLO="630.000E9" IJ01="33.89" IJ02="0.00" IJ11="31.15" IJ12="0.00" VJ01="1.88" VJ02="0.00" VJ11="2.03" VJ12="0.00"/>  
+	<MixerParams FreqLO="638.000E9" IJ01="31.81" IJ02="0.00" IJ11="30.05" IJ12="0.00" VJ01="1.93" VJ02="0.00" VJ11="2.00" VJ12="0.00"/>  
+	<MixerParams FreqLO="646.000E9" IJ01="31.68" IJ02="0.00" IJ11="29.85" IJ12="0.00" VJ01="1.86" VJ02="0.00" VJ11="1.95" VJ12="0.00"/>  
+	<MixerParams FreqLO="654.000E9" IJ01="29.41" IJ02="0.00" IJ11="30.21" IJ12="0.00" VJ01="1.80" VJ02="0.00" VJ11="1.94" VJ12="0.00"/>  
+	<MixerParams FreqLO="662.000E9" IJ01="30.99" IJ02="0.00" IJ11="31.13" IJ12="0.00" VJ01="1.83" VJ02="0.00" VJ11="1.96" VJ12="0.00"/>  
+	<MixerParams FreqLO="670.000E9" IJ01="30.82" IJ02="0.00" IJ11="32.03" IJ12="0.00" VJ01="1.87" VJ02="0.00" VJ11="1.98" VJ12="0.00"/>  
+	<MixerParams FreqLO="678.000E9" IJ01="31.52" IJ02="0.00" IJ11="30.12" IJ12="0.00" VJ01="1.87" VJ02="0.00" VJ11="1.99" VJ12="0.00"/>  
+	<MixerParams FreqLO="686.000E9" IJ01="34.25" IJ02="0.00" IJ11="31.37" IJ12="0.00" VJ01="1.97" VJ02="0.00" VJ11="2.01" VJ12="0.00"/>  
+	<MixerParams FreqLO="694.000E9" IJ01="32.77" IJ02="0.00" IJ11="32.89" IJ12="0.00" VJ01="1.97" VJ02="0.00" VJ11="2.02" VJ12="0.00"/>  
+	<MixerParams FreqLO="702.000E9" IJ01="32.67" IJ02="0.00" IJ11="33.22" IJ12="0.00" VJ01="1.90" VJ02="0.00" VJ11="2.02" VJ12="0.00"/>  
+	<MixerParams FreqLO="710.000E9" IJ01="34.49" IJ02="0.00" IJ11="32.46" IJ12="0.00" VJ01="1.90" VJ02="0.00" VJ11="2.02" VJ12="0.00"/>  
+	<MagnetParams FreqLO="614.000E9" IMag01="12.4" IMag02="0" IMag11="12.4" IMag12="0"/>  
+	<PreampParamsPol0Sb1 FreqLO="614.000E9" ID1="4.00" ID2="4.00" ID3="3.00" VD1="1.00" VD2="0.60" VD3="0.80" VG1="-0.57" VG2="-1.14" VG3="-1.30"/>  
+	<PreampParamsPol0Sb2 FreqLO="0.0E9" ID1="0" ID2="0" ID3="0" VD1="0" VD2="0" VD3="0" VG1="0" VG2="0" VG3="0"/>  
+	<PreampParamsPol1Sb1 FreqLO="614.000E9" ID1="4.00" ID2="4.00" ID3="3.00" VD1="0.90" VD2="0.65" VD3="0.55" VG1="-1.33" VG2="-0.92" VG3="-1.15"/>  
+	<PreampParamsPol1Sb2 FreqLO="0.0E9" ID1="0" ID2="0" ID3="0" VD1="0" VD2="0" VD3="0" VG1="0" VG2="0" VG3="0"/>
+	<PolarizationOrientation PolXAngle="-3.1415926536" PolYAngle="-1.5707963268"/>
+</ConfigData>
