@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="DTX_new">
+<xs:complexType>
+  <xs:sequence>
+    <xs:element name="USE_NEG_CLOCK_EDGE">
+      <xs:complexType>
+        <xs:attribute name="value" type="xs:boolean" use="required"/>
+      </xs:complexType>
+    </xs:element>
+  </xs:sequence>
+  <xs:attribute name="WalshDelayOffset" type="xs:double" default="0.0159996"/>
+</xs:complexType>
+</xs:element>
+</xs:schema>

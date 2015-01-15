@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="ConfigData">
+ <xs:complexType>
+  <xs:sequence>
+    <xs:element name="ASSEMBLY">
+      <xs:complexType>
+        <xs:attribute name="value" type="xs:string" use="required"/>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="ColdMultiplier">
+      <xs:complexType>
+        <xs:attribute name="value" type="xs:integer" use="required"/>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="PLLLoopBwMultiplier">
+      <xs:complexType>
+        <xs:attribute name="value" type="xs:integer" use="required"/>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="FLOYIG">
+      <xs:complexType>
+        <xs:attribute name="value"  use="required"/>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="FHIYIG">
+      <xs:complexType>
+        <xs:attribute name="value"  use="required"/>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="PowerAmp" maxOccurs="unbounded">
+      <xs:complexType>
+        <xs:attribute name="FreqLO" type="xs:double" use="required"/>
+        <xs:attribute name="VD0"    type="xs:decimal" use="required"/>
+        <xs:attribute name="VD1"    type="xs:decimal" use="required"/>
+        <xs:attribute name="VG0"    type="xs:decimal" default="-0.1"/>
+        <xs:attribute name="VG1"    type="xs:decimal" default="-0.1"/>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="OptimizationTargets" maxOccurs="unbounded">
+      <xs:complexType>
+        <xs:attribute name="FreqLO" type="xs:double" use="required"/>
+        <xs:attribute name="PhotoMixerCurrent" type="xs:double" use="required"/>
+      </xs:complexType>
+    </xs:element>
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+</xs:schema>
+

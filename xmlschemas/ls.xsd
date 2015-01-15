@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema
+    elementFormDefault="qualified"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element
+        name="LaserSynthesizer">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element
+                    maxOccurs="unbounded"
+                    ref="frequencyRange"></xs:element>
+            </xs:sequence>
+            <xs:attribute
+                name="independentSlaveLasers"
+                type="xs:integer"
+                use="required">
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element
+        name="frequencyRange">
+        <xs:complexType>
+            <xs:attribute
+                name="minFreq"
+                type="xs:double"
+                use="required"></xs:attribute>
+            <xs:attribute
+                name="maxFreq"
+                type="xs:double"
+                use="required"></xs:attribute>
+            <xs:attribute
+                name="harmonic"
+                type="xs:integer"
+                use="required"></xs:attribute>
+            <xs:attribute
+                name="cvrAmplitude"
+                type="xs:decimal"
+                use="required"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+$Id: OpticalTelescopeData.xsd 188779 2013-04-19 16:18:39Z rmarson $
+ALMA - Atacama Large Millimeter Array
+(c) Associated Universities Inc., 2013
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA
+-->
+<xs:schema
+  elementFormDefault="qualified"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<!-- 
+To avoid duplication the positionLimits, velocityLimits &
+servoCorrections elements are declared here and then used in both the
+azimuth & elevation parameters. One problem with this is that defaults
+cannot be specified. But there are defaults in the C++ class that
+reads this file.
+-->
+
+  <xs:element name="positionLimits">
+    <xs:complexType>
+      <xs:attribute name="minInDeg" type="xs:double" use="required"/>
+      <xs:attribute name="maxInDeg" type="xs:double" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="velocityLimits">
+    <xs:complexType>
+      <xs:attribute name="minInDegPerSec" type="xs:double" use="required"/>
+      <xs:attribute name="maxInDegPerSec" type="xs:double" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="servoCorrections">
+    <xs:complexType>
+    <xs:sequence>
+      <xs:element name="measurement" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="freqInHz" type="xs:double" use="required"/>
+          <xs:attribute name="ampFactor" type="xs:double" use="required"/>
+          <xs:attribute name="phaseInDeg" type="xs:double" use="required"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+<!-- 
+This is the start of the main element. It uses the elements declared above.
+-->
+  <xs:element name="Mount">
+    <xs:complexType>
+    <xs:all>
+
+      <xs:element name="cabinTemperature" minOccurs="0">
+        <xs:complexType>
+          <xs:attribute name="tempInDegC" default="16.0" type="xs:double" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="onSourceCriteria" minOccurs="0">
+        <xs:complexType>
+          <xs:attribute name="toleranceInArcsec" default="10.0" type="xs:double" use="optional"/>
+          <xs:attribute name="consecutiveSuccesses" default="3" type="xs:int" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="azimuthParameters">
+        <xs:complexType>
+        <xs:all>
+          <xs:element ref="positionLimits"/>
+          <xs:element ref="velocityLimits"/>
+          <xs:element ref="servoCorrections" minOccurs="0"/>
+       </xs:all>
+       </xs:complexType>
+       </xs:element>
+
+      <xs:element name="elevationParameters">
+        <xs:complexType>
+        <xs:all>
+          <xs:element ref="positionLimits"/>
+          <xs:element ref="velocityLimits"/>
+          <xs:element ref="servoCorrections" minOccurs="0"/>
+        </xs:all>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
