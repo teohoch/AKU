@@ -55,7 +55,11 @@ class Aku_Database(Database):
 		return self.executeReadSQL(command)
 
 	def get_all_devices(self):
-		command = "SELECT name FROM device;"
+		command = "SELECT value, name FROM device;"
+		return self.executeReadSQL(command)
+
+	def get_device_from_value(self, value):
+		command = "SELECT name FROM device WHERE value=='" + value + "';"
 		return self.executeReadSQL(command)
 
 	def add_upload(self, data):

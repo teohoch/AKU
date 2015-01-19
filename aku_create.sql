@@ -2,7 +2,8 @@
 -- Table: device
 CREATE TABLE device (
     id integer NOT NULL  PRIMARY KEY AUTOINCREMENT,
-    name varchar(25) NOT NULL
+    name varchar(25) NOT NULL,
+    value varchar(25) NOT NULL
 );
 
 -- Table: ste
@@ -25,29 +26,29 @@ CREATE TABLE uploads (
     FOREIGN KEY (device_id) REFERENCES device (id)
 );
 
-INSERT INTO device (name) VALUES 
-	('Coldcart3'),
-	('Coldcart4'),
-	('Coldcart5'),
-	('Coldcart6'),
-	('Coldcart7'),
-	('Coldcart8'),
-	('Coldcart9'),
-	('Coldcart10'),
-	('WCA3'),
-	('WCA4'),
-	('WCA5'),
-	('WCA6'),
-	('WCA7'),
-	('WCA8'),
-	('WCA9'),
-	('WCA10'),
-	('Cryostat'),
-	('DTX'),
-	('IFProc'),
-	('LPR'),
-	('Mount'),
-	('PDA');
+INSERT INTO device (name, value) VALUES
+	('ColdCart3', 'ColdCart3'),
+	('ColdCart4', 'ColdCart4'),
+	('ColdCart5', 'ColdCart5'),
+	('ColdCart6', 'ColdCart6'),
+	('ColdCart7', 'ColdCart7'),
+	('ColdCart8', 'ColdCart8'),
+	('ColdCart9', 'ColdCart4'),
+	('ColdCart10', 'ColdCart10'),
+	('WCA3', 'WCA3'),
+	('WCA4', 'WCA4'),
+	('WCA5', 'WCA5'),
+	('WCA6', 'WCA6'),
+	('WCA7', 'WCA7'),
+	('WCA8', 'WCA8'),
+	('WCA9', 'WCA9'),
+	('WCA10', 'WCA10'),
+	('Cryostat', 'Cryostat'),
+	('DTX', 'DTX_new'),
+	('IFProc', 'IFProc'),
+	('LPR', 'LPR'),
+	('Mount', 'Mount'),
+	('PDA', 'PDA');
 
 INSERT INTO ste (name) VALUES
 	('AOS'),

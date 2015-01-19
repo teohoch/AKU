@@ -5,7 +5,7 @@ import subprocess
 
 
 def transform(mypath):
-	onlyfiles = [ f for f in listdir(mypath) if (isfile(join(mypath,f)) and splitext(f)[1]=='' )]
+	onlyfiles = [ f for f in listdir(mypath) if (isfile(join(mypath,f)) and splitext(f)[1]=='.xml' )]
 
 	regex = 'ASSEMBLY value=\"([a-zA-Z]+\d*)'
 	number = 0
@@ -20,7 +20,13 @@ def transform(mypath):
 
 
 		except subprocess.CalledProcessError:
-			pass
+			try:
+				output = subprocess.check_output(['grep', 'DTX_new', join(mypath,a)])
+				rename(join(mypath,a),join(mypath, ('DTX'+'-'+str(number)+'.xml')))
+				print a + '  ==>  ' + ('DTX'+'-'+str(number))
+				number += 1
+			except:
+				pass
 
 def lower(mypath):
 	onlyfiles = [ f for f in listdir(mypath) if (isfile(join(mypath,f)))]
@@ -32,5 +38,5 @@ def lower(mypath):
 path = 'xmlTest'
 xml_schemes = 'xmlschemas'
 
-lower(xml_schemes)
+transform('TMCDB_DATA/')
 

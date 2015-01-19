@@ -44,7 +44,7 @@ def aku(number):
 	if number == 1:
 		form = TicketForm()
 
-		form.Device.choices = select_field_transform(devices)
+		form.Device.choices = devices
 		form.STE.choices = select_field_transform(ste)
 
 		if form.validate_on_submit():
@@ -68,14 +68,15 @@ def aku(number):
 	elif number == 4:
 		well_formed = xml_well_formed(os.path.join(app.config['UPLOAD_FOLDER'], session['filename']))
 		if not session['device']=='IFProc' and well_formed:
-			corresponds = correspond_to_device(os.path.join(app.config['UPLOAD_FOLDER'], session['filename']), session['device'])
-			scheme_valid = validate_scheme(os.path.join(app.config['UPLOAD_FOLDER'], session['filename']), session['device'])
+			device_name = db.get_device_from_value(session['device'])[0][0]
+			corresponds = correspond_to_device(os.path.join(app.config['UPLOAD_FOLDER'], session['filename']), device_name)
+			scheme_valid = validate_scheme(os.path.join(app.config['UPLOAD_FOLDER'], session['filename']), device_name)
 			#if 'Coldcart' in session['device'] or 'WCA' in session['device']:
 
 
 		if (well_formed and corresponds and scheme_valid):
 			return 'You did it >:D!'
-		return 'Cuek'
+		return 'w '+str(well_formed) +' c ' + str(corresponds) + ' s ' + str(scheme_valid)
 
 
 

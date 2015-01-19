@@ -17,6 +17,8 @@ def xml_well_formed(filename):
 		raise
 
 def correspond_to_device(filename, device):
+	print filename
+	print(device)
 	try:
 		subprocess.check_output(['grep','-c', device, filename])
 		return True
