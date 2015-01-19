@@ -18,8 +18,9 @@ CREATE TABLE uploads (
     device_id integer NOT NULL,
     ticket varchar(25) NOT NULL,
     filename varchar(100) NOT NULL,
-    serial_number integer,
-    date datetime NOT NULL,
+    username varchar(50) NOT NULL,
+    serial_number integer DEFAULT NULL,
+    date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (ste_id) REFERENCES ste (id),
     FOREIGN KEY (device_id) REFERENCES device (id)
 );

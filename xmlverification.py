@@ -1,22 +1,20 @@
-import xml.parsers.expat
 import subprocess
 from lxml import etree
+from xml.dom.minidom import parse
+from integratedFreqCheck import freq_order_check
+from integratedPolarizationAngle import polarization_check
+
 
 from os.path import join
 
-SCHEMA_PATH = 'xmlschemas'
-
-def parsefile(filename):
-	parser = xml.parsers.expat.ParserCreate()
-	parser.ParseFile(open(filename, "r"))
+SCHEMA_PATH = '/home/teohoch/PycharmProjects/AKU/xmlschemas'
 
 
 def xml_well_formed(filename):
 	try:
-		parsefile(filename)
-		return True
-	except Exception, e:
-		return False
+		return parse(filename)
+	except:
+		raise
 
 def correspond_to_device(filename, device):
 	try:
@@ -35,8 +33,14 @@ def validate_scheme(filename, device):
 
 	return schema.validate(file_doc)
 
-path = 'xmlTest'
+def freq_order_file_check(filename):
+	return freq_order_check(filename)
 
-print(xml_well_formed(join(path, 'ColdCart3-17.xml')))
-print correspond_to_device(join(path, 'ColdCart3-17.xml'), 'ColdCart3')
-print validate_scheme(join(path, 'ColdCart3-17.xml'), 'dtx')
+def polarization_angle_check(filename):
+	return polarization_check(filename)
+
+path = '/home/teohoch/PycharmProjects/AKU/xmlTest'
+
+#print(xml_well_formed(join(path, 'ColdCart3-17.xml')))
+#print correspond_to_device(join(path, 'ColdCart3-17.xml'), 'ColdCart3')
+#print validate_scheme(join(path, 'ColdCart3-17.xml'), 'Coldcart3')

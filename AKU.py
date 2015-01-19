@@ -2,11 +2,18 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import os
 from werkzeug.utils import secure_filename
 from forms import *
+from xmlverification import *
+from database import Aku_Database
+
+
 
 app = Flask(__name__)
 app.config.from_object('config')
 app.debug = True
 
+db = Aku_Database(app.config['DB_PATH'])
+ste = db.get_all_ste()
+devices = db.get_all_devices()
 
 @app.route('/')
 def index():
@@ -36,6 +43,10 @@ def loader(form):
 def aku(number):
 	if number == 1:
 		form = TicketForm()
+
+		form.Device.choices = select_field_transform(devices)
+		form.STE.choices = select_field_transform(ste)
+
 		if form.validate_on_submit():
 			session['device'] = form.Device.data
 			session['ste'] = form.STE.data
@@ -55,7 +66,16 @@ def aku(number):
 	elif number == 3:
 		return render_template('review.html')
 	elif number == 4:
-		return 0
+		well_formed = xml_well_formed(os.path.join(app.config['UPLOAD_FOLDER'], session['filename']))
+		if not session['device']=='IFProc' and well_formed:
+			corresponds = correspond_to_device(os.path.join(app.config['UPLOAD_FOLDER'], session['filename']), session['device'])
+			scheme_valid = validate_scheme(os.path.join(app.config['UPLOAD_FOLDER'], session['filename']), session['device'])
+			#if 'Coldcart' in session['device'] or 'WCA' in session['device']:
+
+
+		if (well_formed and corresponds and scheme_valid):
+			return 'You did it >:D!'
+		return 'Cuek'
 
 
 
