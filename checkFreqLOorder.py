@@ -86,7 +86,7 @@ def main():
 	if filename=="":
 		usage()
 
-
+	print(filename)
 	# Parsing XML File
 	try:
 		xml = parse(filename)
@@ -96,17 +96,18 @@ def main():
 	  	sys.exit(1)
 
 	tagnames = mapNodes(xml, uniqueTagNames, [])
+	print len(tagnames)
 
 
 	# foreach tagname do a search
 	for tagname in tagnames:
+		print 'hello'
 		if debug: print "...Searching by tag =", tagname
 		tagdom = xml.getElementsByTagName(tagname)
 
 		try:
 			for node in tagdom:
 				print node.getAttribute("FreqLO")
-				print type(node.getAttribute("FreqLO"))
 
 			FreqLO = [ float ( node.getAttribute("FreqLO") )for node in tagdom]
 			if debug: print "......FreqLO =", FreqLO

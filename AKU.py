@@ -66,17 +66,31 @@ def aku(number):
 	elif number == 3:
 		return render_template('review.html')
 	elif number == 4:
-		well_formed = xml_well_formed(os.path.join(app.config['UPLOAD_FOLDER'], session['filename']))
-		if not session['device']=='IFProc' and well_formed:
+		filename = os.path.join(app.config['UPLOAD_FOLDER'], session['filename'])
+		checks = []
+		checks.append(xml_well_formed(filename))
+		if not session['device']=='IFProc' and checks[0][0]:
+
 			device_name = db.get_device_from_value(session['device'])[0][0]
-			corresponds = correspond_to_device(os.path.join(app.config['UPLOAD_FOLDER'], session['filename']), device_name)
-			scheme_valid = validate_scheme(os.path.join(app.config['UPLOAD_FOLDER'], session['filename']), device_name)
-			#if 'Coldcart' in session['device'] or 'WCA' in session['device']:
+
+			checks.append(correspond_to_device(filename, device_name))
+			checks.append(validate_scheme(filename, device_name))
+
+			if 'ColdCart' in device_name or 'WCA' in device_name:
+				checks.append(freq_order_file_check(filename))
+				if 'ColdCart' in device_name:
+					checks.append(polarization_angle_check(filename))
+
+		status = True
+
+		for item in checks:
+			status = status and item[0]
+
+		return render_template('xmlanalysis.html',analicis_status=checks, status=status)
 
 
-		if (well_formed and corresponds and scheme_valid):
-			return 'You did it >:D!'
-		return 'w '+str(well_formed) +' c ' + str(corresponds) + ' s ' + str(scheme_valid)
+
+
 
 
 

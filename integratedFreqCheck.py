@@ -50,9 +50,11 @@ def uniqueTagNames(node, tagnames):
 	return tagnames
 
 
-
 # Main routine
 def freq_order_check(filename):
+	print(filename)
+
+	value = True
 
 	# Parsing XML File
 	try:
@@ -62,26 +64,27 @@ def freq_order_check(filename):
 	  	sys.exit(1)
 
 	tagnames = mapNodes(xml, uniqueTagNames, [])
-
+	print len(tagnames)
 
 	# foreach tagname do a search
 	for tagname in tagnames:
+		print 'hello'
 		tagdom = xml.getElementsByTagName(tagname)
 
+
 		try:
-			#for node in tagdom:
-			#	print node.getAttribute("FreqLO")
-			#	print type(node.getAttribute("FreqLO"))
+			for node in tagdom:
+				print node.getAttribute("FreqLO")
 
 			FreqLO = [ float ( node.getAttribute("FreqLO") )for node in tagdom]
 			FreqSorted = copy(FreqLO)
 			FreqSorted.sort()
 			if FreqLO != FreqSorted:
-				return False
-			return True
+				value = False
 
 		except:
-			pass
+			print "......FreqLO = []"
+	return value
 
 
 

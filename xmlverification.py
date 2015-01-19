@@ -12,18 +12,17 @@ SCHEMA_PATH = '/home/teohoch/PycharmProjects/AKU/xmlschemas'
 
 def xml_well_formed(filename):
 	try:
-		return parse(filename)
+		parse(filename)
+		return [True,'File is well formed']
 	except:
-		raise
+		return [False,'File is NOT well formed, according to the XML standard.']
 
 def correspond_to_device(filename, device):
-	print filename
-	print(device)
 	try:
 		subprocess.check_output(['grep','-c', device, filename])
-		return True
+		return [True,'File corresponds to the inputted device.']
 	except subprocess.CalledProcessError:
-		return False
+		return [False, "File doesn't correspond to the inputted device."]
 
 def validate_scheme(filename, device):
 	f = open(join(SCHEMA_PATH, (device.lower()+'.xsd')))
@@ -33,13 +32,20 @@ def validate_scheme(filename, device):
 	d = open(filename)
 	file_doc = etree.parse(d)
 
-	return schema.validate(file_doc)
+	if schema.validate(file_doc):
+		return [True,'The configuration file corresponds to its Schema.']
+	log = schema.error_log.last_error
+	return [False, "The configuration file doesn't correspond to its Schema. Line: " +str(log.line) + " <"+log.message + '>']
 
 def freq_order_file_check(filename):
-	return freq_order_check(filename)
+	if freq_order_check(filename):
+		return [True, "The configuration file has its Frequencies sorted correctly."]
+	return [False, "The configuration file doesn't have it Frequencies sorted correctly."]
 
 def polarization_angle_check(filename):
-	return polarization_check(filename)
+	if polarization_check(filename):
+		return [True, "The configuration file has its Polarization Angles correctly set."]
+	return [False, "The configuration file has its Polarization Angles INCORRECTLY set."]
 
 path = '/home/teohoch/PycharmProjects/AKU/xmlTest'
 
