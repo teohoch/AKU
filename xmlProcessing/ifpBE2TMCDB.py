@@ -45,12 +45,15 @@ def main():
     if options.serial == 0:
         parser.error("Serial needed!")
 
+
+
     try:
        dom1 = parse('IFP_Cal.xml')
     except:
        print "Error trying to open the 'IFP_Cal.xml' file\n"
        sys.exit(1)
-    
+
+
     ifp_configs = dom1.getElementsByTagName("IFP")
     
     xml_header  = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n"

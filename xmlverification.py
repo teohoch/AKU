@@ -1,11 +1,12 @@
 import subprocess
 from lxml import etree
 from xml.dom.minidom import parse
-from integratedFreqCheck import freq_order_check
-from integratedPolarizationAngle import polarization_check
-
-
 from os.path import join
+
+from xmlProcessing.integratedFreqCheck import freq_order_check
+from xmlProcessing.integratedPolarizationAngle import polarization_check
+from xmlProcessing.ifpProccesing import ifpgenerator
+
 
 SCHEMA_PATH = '/home/teohoch/PycharmProjects/AKU/xmlschemas'
 
@@ -46,6 +47,9 @@ def polarization_angle_check(filename):
 	if polarization_check(filename):
 		return [True, "The configuration file has its Polarization Angles correctly set."]
 	return [False, "The configuration file has its Polarization Angles INCORRECTLY set."]
+
+def ifpProcessing(filename, serial, destpath):
+	return ifpgenerator(filename,serial,destpath)
 
 path = '/home/teohoch/PycharmProjects/AKU/xmlTest'
 

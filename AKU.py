@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import os
 from werkzeug.utils import secure_filename
 from forms import *
-from xmlverification import *
+from xmlverification import xml_well_formed, correspond_to_device, validate_scheme,freq_order_file_check, polarization_angle_check, ifpgenerator
 from database import Aku_Database
 
 
@@ -69,17 +69,21 @@ def aku(number):
 		filename = os.path.join(app.config['UPLOAD_FOLDER'], session['filename'])
 		checks = []
 		checks.append(xml_well_formed(filename))
-		if not session['device']=='IFProc' and checks[0][0]:
+		if checks[0][0]:
+			if not session['device']=='IFProc':
 
-			device_name = db.get_device_from_value(session['device'])[0][0]
+				device_name = db.get_device_from_value(session['device'])[0][0]
 
-			checks.append(correspond_to_device(filename, device_name))
-			checks.append(validate_scheme(filename, device_name))
+				checks.append(correspond_to_device(filename, device_name))
+				checks.append(validate_scheme(filename, device_name))
 
-			if 'ColdCart' in device_name or 'WCA' in device_name:
-				checks.append(freq_order_file_check(filename))
-				if 'ColdCart' in device_name:
-					checks.append(polarization_angle_check(filename))
+				if 'ColdCart' in device_name or 'WCA' in device_name:
+					checks.append(freq_order_file_check(filename))
+					if 'ColdCart' in device_name:
+						checks.append(polarization_angle_check(filename))
+			else:
+				checks.append(ifpgenerator(filename, session['serial'],"/uploads"))
+
 
 		status = True
 
