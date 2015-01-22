@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>AKU Review</title>
+</head>
+<body>
+    <h1>Review Configuration</h1>
+    <table style="border: 1px solid black;" border="1">
+        <tr>
+            <td>Destination STE</td>
+            <td>{{ session['ste'] }}</td>
+        </tr>
+        <tr>
+            <td>Destination Device</td>
+            <td>{{ session['device'] }}</td>
+        </tr>
+        <tr>
+            <td>Ticket Number</td>
+            <td>{{ session['ticket'] }}</td>
+        </tr>
+        <tr>
+            <td>Configuration File</td>
+            <td>{{ session['filename'] }}</td>
+        </tr>
+        {% if (session['device']=='IFProc') %}
+            <td>Serial</td>
+            <td>{{ session['serial'] }}</td>
+      {% endif %}
+    </table>
+    <a href="/aku/4/"><h3>Esta todo Bien :)</h3></a>
+</body>
+</html>

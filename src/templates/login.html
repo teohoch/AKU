@@ -1,0 +1,10 @@
+{% from "_formhelpers.html" import render_field %}
+<title>AKU Login</title>
+<h1>Login</h1>
+<form method=post action="/register">
+  <dl>
+    {{ render_field(form.username) }}
+    {{ render_field(form.password) }}
+  </dl>
+  <p><input type=submit value=Login>
+</form>

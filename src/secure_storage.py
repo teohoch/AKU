@@ -4,6 +4,7 @@ from os.path import isfile,join
 import os
 import base64
 import pickle
+import ConfigParser
 
 
 ### Settings ###
@@ -22,15 +23,17 @@ class SecureKey():
 	"""
 	This class provides a semi-secure way to store sensitive information, such as repository passwords asn usernames
 	"""
-	def __init__(self, key, storagelocation):
+	def __init__(self, key, configPath):
 		"""
 		Initialize the instance, saving the key, generating salt for encryption, and if the key already exists, loading
 		its contents
 		:param key: A symbol to identify the value stored ex: 'SVN', 'pass', etc.
 		"""
 		self.key = key
-		self.storageLocation = storagelocation
-		self.passLocation = join(storagelocation, key)
+		Config = ConfigParser.ConfigParser()
+		Config.read(configPath)
+		self.storageLocation = Config.get('Locations', 'SecureStorage')
+		self.passLocation = join(self.storageLocation, key)
 		self.salt = self.__get_salt_for_key()
 		if isfile('./' + self.key + '.p') and isfile('./' + self.key):
 			self.__load_db()
@@ -108,18 +111,16 @@ class SecureKey():
 	def retrieve(self):
 		return self.__decrypt()
 
+def setup(path):
+	from getpass import getpass
+
+	user = SecureKey('SvnUser', path)
+	password = SecureKey('SvnPass', path)
+
+	user.store(raw_input('Please input the User for the ALMA Configuration Repository: \n'))
+	password.store(getpass('Please input the Password for the ALMA Configuration Repository:\n'))
+
+
 if __name__ == '__main__':
 
-	from getpass import getpass
-	import ConfigParser
-
-	Config = ConfigParser.ConfigParser()
-	Config.read("../configuration/conf.ini")
-	print(Config.get('SecureStorage','location'))
-
-	user = SecureKey('SvnUser', Config.get('SecureStorage','location'))
-	password = SecureKey('SvnPass', Config.get('SecureStorage','location'))
-	a = raw_input('Please input the User for the ALMA Configuration Repository: ')
-
-	user.store(a)
-	password.store(getpass('Please input the Password for the ALMA Configuration Repository'))
+	setup(os.path.abspath('../Configuration/conf.ini'))

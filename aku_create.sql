@@ -1,19 +1,19 @@
 
 -- Table: device
-CREATE TABLE device (
+CREATE TABLE IF NOT EXISTS device (
     id integer NOT NULL  PRIMARY KEY AUTOINCREMENT,
     name varchar(25) NOT NULL,
     value varchar(25) NOT NULL
 );
 
 -- Table: ste
-CREATE TABLE ste (
+CREATE TABLE IF NOT EXISTS ste (
     id integer NOT NULL  PRIMARY KEY AUTOINCREMENT,
     name varchar(25) NOT NULL
 );
 
 -- Table: uploads
-CREATE TABLE uploads (
+CREATE TABLE IF NOT EXISTS uploads (
     id integer NOT NULL  PRIMARY KEY AUTOINCREMENT,
     ste_id integer NOT NULL,
     device_id integer NOT NULL,
