@@ -5,7 +5,7 @@ import subprocess
 
 
 def transform(mypath):
-	onlyfiles = [ f for f in listdir(mypath) if (isfile(join(mypath,f)) and splitext(f)[1]=='.xml' )]
+	onlyfiles = [f for f in listdir(mypath) if (isfile(join(mypath,f)) and splitext(f)[1]=='.xml' )]
 
 	regex = 'ASSEMBLY value=\"([a-zA-Z]+\d*)'
 	number = 0
@@ -28,11 +28,11 @@ def transform(mypath):
 			except:
 				pass
 
-def lower(mypath):
-	onlyfiles = [ f for f in listdir(mypath) if (isfile(join(mypath,f)))]
-	for a in onlyfiles:
-		filepath =join(mypath,a)
-		rename(filepath, filepath.lower())
+def lower(my_path):
+	only_files = [ f for f in listdir(my_path) if (isfile(join(my_path,f)))]
+	for a in only_files:
+		file_path =join(my_path,a)
+		rename(file_path, file_path.lower())
 
 
 path = 'xmlTest'

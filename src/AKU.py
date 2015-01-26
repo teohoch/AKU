@@ -2,9 +2,11 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import os
 from werkzeug.utils import secure_filename
 from forms import *
-from xmlverification import xml_well_formed, correspond_to_device, validate_scheme,freq_order_file_check, polarization_angle_check, ifpgenerator
+from xmlverification import XmlVerification
 from database import Aku_Database
 from svncontrols import AkuSvn
+from sshconnection import ssh_update_assemblies
+
 
 
 
@@ -32,7 +34,7 @@ def loader(form):
 			form.conf.data.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 			session['filename'] = filename
 		if session['device'] == 'IFProc':
-			session['serial'] == form.Serial.data
+			session['serial'] = form.Serial.data
 		return redirect('/aku/3/')
 	return render_template('upload.html',form=form)
 
@@ -65,34 +67,56 @@ def aku(number=1):
 		return render_template('review.html')
 	elif number == 4:
 		filename = os.path.join(app.config['UPLOAD_FOLDER'], session['filename'])
-		checks = [xml_well_formed(filename)]
+		file_processed = session['filename']
+		device_name = db.get_device_from_value(session['device'])[0][0]
+
+		test = XmlVerification(app.config['CONFIGURATION_PATH'],filename, device_name)
+
+		checks = [test.xml_well_formed()]
 		if checks[0][0]:
 			if not session['device']=='IFProc':
 
-				device_name = db.get_device_from_value(session['device'])[0][0]
-
-				checks.append(correspond_to_device(filename, device_name))
-				checks.append(validate_scheme(filename, device_name))
+				checks.append(test.correspond_to_device())
+				checks.append(test.validate_scheme())
 
 				if 'ColdCart' in device_name or 'WCA' in device_name:
-					checks.append(freq_order_file_check(filename))
+					checks.append(test.freq_order_file_check())
 					if 'ColdCart' in device_name:
-						checks.append(polarization_angle_check(filename))
+						checks.append(test.polarization_angle_check())
 			else:
-				checks.append(ifpgenerator(filename, session['serial'],"/uploads"))
+				checks.append(test.ifpProcessing(session['serial']))
+				file_processed =  "ifp_%d.xml" %session['serial']
 
 
 		status = True
+		svn_status = []
+		db_status = False
+		ssh_status = False
 
 		for item in checks:
 			status = status and item[0]
 
 		if status:
+
 			svn = AkuSvn(app.config['CONFIGURATION_PATH'])
-			svn.uploadToRepo(app.config['UPLOAD_FOLDER'], session['filename'], 'teohoch')
+			svn_status = svn.uploadToRepo(app.config['UPLOAD_FOLDER'], file_processed, 'teohoch')
+
+			if svn_status[0]:
+				data = {
+					'ste' : session['ste'],
+					'device' : device_name,
+					'ticket' : session['ticket'],
+					'filename' : file_processed,
+					'action' : svn_status[0],
+					'serial' : session['serial'],
+					'username' : 'teohoch'}
+				db_status = db.add_upload(data)
+
+				ssh_status = ssh_update_assemblies(session['ste'])
 
 
-		return render_template('xmlanalysis.html',analicis_status=checks, status=status)
+
+		return render_template('xmlanalysis.html',analicis_status=checks, status=status, svnstatus=svn_status, filename= file_processed, db_status=db_status, ssh_status=ssh_status, ste=session['ste'])
 
 
 

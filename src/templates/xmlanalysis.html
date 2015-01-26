@@ -12,7 +12,63 @@
         {% endfor %}
     </ul>
 
-    <h2>{{ status }}</h2>
+
+    <h2>File Analysis and Processing was a
+        {% if status %}
+            <span style="color: green">SUCCESS</span>
+        {% else %}
+            <span style="color: red">FAILURE</span> </h2>
+        {% endif %}
+    </h2>
+    <h2>Upload to the ALMA Configuration Repository was a:
+        {% if svnstatus[1] %}
+            <span style="color: green">SUCCESS</span>
+        {% else %}
+            <span style="color: red">FAILURE</span> </h2>
+        {% endif %}
+    </h2>
+    <p>
+        {% if svnstatus[1] %}
+            The Uploaded file was <span style="color: green">{{ filename }}</span>
+            and it was
+            {% if svnstatus[0] %}
+                <span style="color: green"> added </span>
+            {% else %}
+                <span style="color: green"> updated </span>
+            {% endif %}
+            into the Repository
+        {% else %}
+            The file you were trying to Upload was <span style="color: red">{{ filename }}</span>
+            and it wasn't uploaded because
+            {% if svnstatus[0] %}
+                the was an internal failure. Try again later.
+            {% else %}
+                the file already exist in the repository, and <span style="color: red">NO changes</span>  have been made to it. Please make sure you have
+                the correct file
+            {% endif %}
+        {% endif %}
+    </p>
+    <h2>The creation of an entry for this upload in the Database was a:
+        {% if db_status %}
+            <span style="color: green">SUCCESS</span>
+        {% else %}
+            <span style="color: red">FAILURE</span> </h2>
+        {% endif %}
+    </h2>
+    <h2>Running the updateAssemblies command on <span style="color: green"><b> {{ ste }} </b></span> was a:
+        {% if ssh_status %}
+            <span style="color: green">SUCCESS</span>
+        {% else %}
+            <span style="color: red">FAILURE</span> </h2>
+        {% endif %}
+    </h2>
+    {% if ssh_status %}
+        <h1 style="color: green">Congratulations! Your configuration file has been  successfully uploaded</h1>
+        <p>It was uploaded to the STE {{ ste }}. The other STEs will be update in no more than one (1) hour</p>
+    {% endif %}
+
+
+
 
 </body>
 </html>

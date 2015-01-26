@@ -72,7 +72,7 @@ class AkuSvn():
 	def __updateFile(self, filepath, filename):
 		finalPosition = join(self.destinationPath, self.pathInRepo, filename)
 
-		if filecmp.cmp(join(filepath, filename), finalPosition):
+		if not filecmp.cmp(join(filepath, filename), finalPosition):
 			try:
 				copy2(join(filepath, filename), finalPosition)
 				return True
@@ -83,15 +83,13 @@ class AkuSvn():
 
 	def uploadToRepo(self, filepath, filename, user):
 		"""
-		Uploads the file to the rep
-		:param filepath:
-		:param filename:
-		:param user:
-		:return:
+		Uploads the file to the repository
+		:param filepath: The path to the file to be uploaded
+		:param filename: The name of the file to be uploaded
+		:param user: The username of the user uploading the file
+		:return: An array containing the action taken by Svn (add or update file), and the status of the action
+		(True if it was a success, False if there was nothing to update, or adding failed)
 		"""
-		# [ <doAction>, <status>
-		# <doAction> => True -> add, False -> update
-		# <status> => True -> Success, False -> Nothing to update
 		self.client.update(self.destinationPath, recurse=True)
 		doaction = self.__add_or_update(filename)
 		status = True
