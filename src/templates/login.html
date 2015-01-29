@@ -1,8 +1,18 @@
 {% from "_formhelpers.html" import render_field %}
 <title>AKU Login</title>
 <h1>Login</h1>
-<form method=post action="/register">
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<form method=POST action="/login">
   <dl>
+  	{{ form.hidden_tag() }}
     {{ render_field(form.username) }}
     {{ render_field(form.password) }}
   </dl>

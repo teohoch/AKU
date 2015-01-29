@@ -146,4 +146,13 @@ class Aku_Database(Database):
 			self.executeWriteSQL(command)
 			return True
 		except:
+			print 'error in sqlwrite'
 			return False
+
+	def get_all_uploads(self):
+		command = 'SELECT * FROM uploads ORDER BY date DESC LIMIT;'
+		return self.executeReadSQL(command)
+
+	def get_n_uploads(self, n):
+		command = 'SELECT * FROM uploads ORDER BY date DESC LIMIT ' + str(n) + ';'
+		return self.executeReadSQL(command)

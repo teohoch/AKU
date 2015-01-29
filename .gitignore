@@ -107,3 +107,4 @@ target/
 
 TMCDB_DATA/
 AkuFiles/
+*.pyc

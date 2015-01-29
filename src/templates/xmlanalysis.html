@@ -21,51 +21,101 @@
         {% endif %}
     </h2>
     <h2>Upload to the ALMA Configuration Repository was a:
-        {% if svnstatus[1] %}
+        {% if svnstatus[1] and (svnstatus[0] or force) %}
             <span style="color: green">SUCCESS</span>
+	</h2>
+            <p>
+            The Uploaded file was <span style="color: green">{{ filename }}</span> and it was
+                <span style="color: green">
+					{% if svnstatus[0] %}
+						added
+					{% else %}
+						updated
+					{% endif %}
+				</span> into the Repository
+            </p>
+
+            <h2>The creation of an entry for this upload in the Database was a:
+				{% if db_status %}
+					<span style="color: green">SUCCESS</span>
+			</h2>
+					<h2>Running the updateAssemblies command on <span style="color: green"><b> {{ ste }} </b></span> was a:
+						{% if ssh_status %}
+							<span style="color: green">SUCCESS</span>
+					</h2>
+                            <h1 style="color: green">Congratulations! Your configuration file has been  successfully uploaded</h1>
+							<p>It was uploaded to the STE {{ ste }}. The other STEs will be update in no more than one (1) hour</p>
+						{% else %}
+							<span style="color: red">FAILURE</span>
+					</h2>
+                            <p>There was an error with the connection to the STE</p>
+						{% endif %}
+
+
+				{% else %}
+					<span style="color: red">FAILURE</span>
+				</h2>
+				{% endif %}
+
+
+
+
+
         {% else %}
-            <span style="color: red">FAILURE</span> </h2>
-        {% endif %}
-    </h2>
-    <p>
-        {% if svnstatus[1] %}
-            The Uploaded file was <span style="color: green">{{ filename }}</span>
-            and it was
-            {% if svnstatus[0] %}
-                <span style="color: green"> added </span>
-            {% else %}
-                <span style="color: green"> updated </span>
-            {% endif %}
-            into the Repository
-        {% else %}
+            <span style="color: red">FAILURE</span>
+	</h2>
+            <p>
             The file you were trying to Upload was <span style="color: red">{{ filename }}</span>
-            and it wasn't uploaded because
-            {% if svnstatus[0] %}
-                the was an internal failure. Try again later.
-            {% else %}
-                the file already exist in the repository, and <span style="color: red">NO changes</span>  have been made to it. Please make sure you have
-                the correct file
-            {% endif %}
+				and it wasn't uploaded because
+			{% if svnstatus[0] %}
+                there was an internal failure. Try again later.
+			{% else %}
+                the file already exist in the repository, and
+				{% if force %}
+					there was an internal failure. The uploaded file is too different for an automated merge. Please fix manually. These are the differences:
+                    <br/>
+                    {{ svnstatus[2] }}
+				{% else %}
+                    {% if svnstatus[1] %}
+						<h3>Please confirm that you want to upload this file, updating the existing one:</h3>
+                        <form action="/aku/4/" method="POST" enctype="multipart/form-data">
+						  <dl>
+							{{ form.hidden_tag() }}
+						  </dl>
+						  <input type=submit name="btn" value='Confirm Upload'>
+						  <input type=submit name="btn" value='Cancel'>
+						</form>
+					{% else %}
+                        <span style="color: red">NO changes</span>  have been made to it. Please make sure you have	the correct file
+                    {% endif %}
+					<br/>
+					{{ svnstatus[2] }}
+				{% endif %}
+			{% endif %}
+			</p>
         {% endif %}
-    </p>
-    <h2>The creation of an entry for this upload in the Database was a:
-        {% if db_status %}
-            <span style="color: green">SUCCESS</span>
-        {% else %}
-            <span style="color: red">FAILURE</span> </h2>
-        {% endif %}
-    </h2>
-    <h2>Running the updateAssemblies command on <span style="color: green"><b> {{ ste }} </b></span> was a:
-        {% if ssh_status %}
-            <span style="color: green">SUCCESS</span>
-        {% else %}
-            <span style="color: red">FAILURE</span> </h2>
-        {% endif %}
-    </h2>
-    {% if ssh_status %}
-        <h1 style="color: green">Congratulations! Your configuration file has been  successfully uploaded</h1>
-        <p>It was uploaded to the STE {{ ste }}. The other STEs will be update in no more than one (1) hour</p>
-    {% endif %}
+
+	{% if not completed[0] %}
+		<h2>The upload to the Repository wasn't successful, do you wand to retry?</h2>
+        <form action="/aku/4/" method="POST">
+		  <dl>
+			{{ form.hidden_tag() }}
+		  </dl>
+		  <input type=submit name="btn" value='Retry'>
+		  <input type=submit name="btn" value='Cancel'>
+		</form>
+	{% else %}
+        {% if svnstatus[1] and (svnstatus[0] or force) and not completed[2] %}
+			<h2>The Upload to the repository was successful, but the system wasn't able to send the update command
+                (UpdateAssemblies) to the STE. However, it will be automatically updated in a maximum of one hour</h2>
+        	{% endif %}
+
+	{% endif %} 
+
+
+
+
+
 
 
 

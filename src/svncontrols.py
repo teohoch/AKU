@@ -5,6 +5,7 @@ from shutil import copy2
 from secure_storage import SecureKey
 import filecmp
 import ConfigParser
+from diffchecker import show_differences
 
 
 class AkuSvn():
@@ -29,7 +30,7 @@ class AkuSvn():
 		config = ConfigParser.ConfigParser()
 		config.read(confPath)
 
-		self.URL = config.get('SVN','URL')
+		self.URL = config.get('SVN', 'URL')
 		self.destinationPath = config.get('Locations', 'SvnRepository')
 		self.pathInRepo = config.get('SVN', 'PATH_IN_REPO')
 		self.client = pysvn.Client()
@@ -81,25 +82,37 @@ class AkuSvn():
 		else:
 			return False
 
-	def uploadToRepo(self, filepath, filename, user):
+	def uploadToRepo(self, filepath, filename, user, force):
 		"""
 		Uploads the file to the repository
 		:param filepath: The path to the file to be uploaded
 		:param filename: The name of the file to be uploaded
 		:param user: The username of the user uploading the file
-		:return: An array containing the action taken by Svn (add or update file), and the status of the action
+		:return: An array containing the action taken by Svn (add => True or update => False), the status of the action
 		(True if it was a success, False if there was nothing to update, or adding failed)
+		and a message. If the update wasn't forced, it'll return the differences between the files. If the update was
+		forced but it failed, it will return  the differences between the files. Any other way, message will be empty
 		"""
 		self.client.update(self.destinationPath, recurse=True)
 		doaction = self.__add_or_update(filename)
+
 		status = True
+		out_message = ''
 
 		if doaction:
 			status = self.__addFile(filepath, filename)
 		else:
-			status = self.__updateFile(filepath, filename)
+			if force:
+				status = self.__updateFile(filepath, filename)
+				print 'with force ' + str(status)
+				if not status:
+					out_message = show_differences(join(filepath, filename), join(self.destinationPath,self.pathInRepo, filename))
+			else:
+				status = not filecmp.cmp(join(filepath, filename), join(self.destinationPath, self.pathInRepo, filename))
+				if status:
+					out_message = show_differences(join(filepath, filename), join(self.destinationPath,self.pathInRepo, filename))
 
-		if status:
+		if status and (force or doaction):
 			message = "The configuration file " + filename
 			action = ('added' if doaction else 'updated')
 			message += " has been " + action + ' by ' + user + ' according to '
@@ -107,13 +120,15 @@ class AkuSvn():
 			self.client.checkin(self.destinationPath, message, recurse=True)
 			remove(join(filepath, filename))
 
-		return [doaction, status]
+		print([doaction, status, out_message])
+		return [doaction, status, out_message]
+
 
 def setup(configPath):
 	print('Checking Out the ALMA Configurations Repository')
 	AkuSvn(configPath)
 	print('\tCheckout Complete.')
 
-if __name__ == '__main__':
 
-	setup( '../Configuration/conf.ini')
+if __name__ == '__main__':
+	setup('../Configuration/conf.ini')

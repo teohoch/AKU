@@ -32,3 +32,4 @@ class UploadForm(Form):
 class IfpUploadForm(Form):
 	conf = FileField('Select Configuration File ', validators=[FileRequired(), validateIFP])
 	Serial = IntegerField('Introduce the corresponding Serial for IFProc:',validators=[validators.DataRequired()])
+

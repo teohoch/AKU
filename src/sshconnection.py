@@ -9,17 +9,19 @@ def ssh_update_assemblies(ste):
 	host = ste + '-gns.osf.alma.cl'
 	user = 'jreveco'
 	password = 'mynewshinypass'
-
-	s = pxssh.pxssh()
-	if not s.login (host, username=user,password=password):
-		#print "SSH session failed on login."
-		#print str(s)
+	try:
+		s = pxssh.pxssh()
+		if not s.login (host, username=user,password=password):
+			#print "SSH session failed on login."
+			#print str(s)
+			return False
+		else:
+			#print "SSH session login successful"
+			s.sendline ('./updateAssembliesFake')
+			s.prompt()         # match the prompt
+			#print s.before     # print everything before the prompt.
+			s.logout()
+			return True
+	except:
 		return False
-	else:
-		#print "SSH session login successful"
-		s.sendline ('./updateAssembliesFake')
-		s.prompt()         # match the prompt
-		#print s.before     # print everything before the prompt.
-		s.logout()
-		return True
 
