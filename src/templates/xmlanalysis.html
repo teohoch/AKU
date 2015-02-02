@@ -1,69 +1,82 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>AKU Results</title>
-</head>
-<body>
+{% extends 'layout.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block content %}
+<div class="container">
+
+
+
     <h1>Configuration Analysis</h1>
-    <ul>
-        {% for item in analicis_status %}
-            <li {% if not item[0]  %} style="color: red" {% endif %}>{{ item[1] }}</li>
-        {% endfor %}
-    </ul>
 
 
-    <h2>File Analysis and Processing was a
-        {% if status %}
-            <span style="color: green">SUCCESS</span>
-        {% else %}
-            <span style="color: red">FAILURE</span> </h2>
-        {% endif %}
-    </h2>
-    <h2>Upload to the ALMA Configuration Repository was a:
-        {% if svnstatus[1] and (svnstatus[0] or force) %}
-            <span style="color: green">SUCCESS</span>
-	</h2>
-            <p>
-            The Uploaded file was <span style="color: green">{{ filename }}</span> and it was
-                <span style="color: green">
-					{% if svnstatus[0] %}
-						added
-					{% else %}
-						updated
-					{% endif %}
-				</span> into the Repository
-            </p>
+	<ul>
+		<h2><li>File Analysis and Processing was a
+			{% if status %}
+				<span style="color: green">SUCCESS</span></li></h2>
+			{% else %}
+				<span style="color: red">FAILURE</span></li></h2>
+			{% endif %}
+			<ul>
+				{% for item in analicis_status %}
+					<li {% if not item[0]  %} style="color: red" {% endif %}>{{ item[1] }}</li>
+				{% endfor %}
+			</ul>
 
-            <h2>The creation of an entry for this upload in the Database was a:
-				{% if db_status %}
+		<h2><li>Upload to the ALMA Configuration Repository was a:
+			{% if svnstatus[1] and (svnstatus[0] or force) %}
+				<span style="color: green">SUCCESS</span>
+			</li>
+		</h2>
+		<p>The Uploaded file was <span style="color: green">{{ filename }}</span> and it was
+			<span style="color: green">
+				{% if svnstatus[0] %}
+					added
+				{% else %}
+					updated
+				{% endif %}
+            </span> into the Repository
+        </p>
+
+		<h2>
+            <li>The creation of an entry for this upload in the Database was a:
+			{% if db_status %}
+				<span style="color: green">SUCCESS</span>
+			</li>
+		</h2>
+			<h2>
+                <li>
+					Running the updateAssemblies command on <span style="color: green"><b> {{ ste }} </b></span> was a:
+				{% if ssh_status %}
 					<span style="color: green">SUCCESS</span>
+				</li>
 			</h2>
-					<h2>Running the updateAssemblies command on <span style="color: green"><b> {{ ste }} </b></span> was a:
-						{% if ssh_status %}
-							<span style="color: green">SUCCESS</span>
-					</h2>
-                            <h1 style="color: green">Congratulations! Your configuration file has been  successfully uploaded</h1>
-							<p>It was uploaded to the STE {{ ste }}. The other STEs will be update in no more than one (1) hour</p>
-						{% else %}
-							<span style="color: red">FAILURE</span>
-					</h2>
-                            <p>There was an error with the connection to the STE</p>
-						{% endif %}
-
-
+			<h1 style="color: green">
+					Congratulations! Your configuration file has been  successfully uploaded
+			</h1>
+			<p>
+            	It was uploaded to the STE {{ ste }}. The other STEs will be update in no more than one (1) hour
+        	</p>
 				{% else %}
 					<span style="color: red">FAILURE</span>
-				</h2>
+				</li>
+		</h2>
+		<p>
+            		There was an error with the connection to the STE
+        </p>
 				{% endif %}
 
-
-
+			{% else %}
+				<span style="color: red">FAILURE</span>
+			</li>
+		</h2>
+			{% endif %}
 
 
         {% else %}
             <span style="color: red">FAILURE</span>
-	</h2>
+			</li>
+		</h2>
             <p>
             The file you were trying to Upload was <span style="color: red">{{ filename }}</span>
 				and it wasn't uploaded because
@@ -86,7 +99,7 @@
 						  <input type=submit name="btn" value='Cancel'>
 						</form>
 					{% else %}
-                        <span style="color: red">NO changes</span>  have been made to it. Please make sure you have	the correct file
+                        <span style="color: red">NO changes</span>  have been made to it. Please make sure you have	the correct file.
                     {% endif %}
 					<br/>
 					{{ svnstatus[2] }}
@@ -95,30 +108,32 @@
 			</p>
         {% endif %}
 
+
+    </ul>
+
 	{% if not completed[0] %}
-		<h2>The upload to the Repository wasn't successful, do you wand to retry?</h2>
-        <form action="/aku/4/" method="POST">
-		  <dl>
-			{{ form.hidden_tag() }}
-		  </dl>
-		  <input type=submit name="btn" value='Retry'>
-		  <input type=submit name="btn" value='Cancel'>
-		</form>
-	{% else %}
-        {% if svnstatus[1] and (svnstatus[0] or force) and not completed[2] %}
-			<h2>The Upload to the repository was successful, but the system wasn't able to send the update command
-                (UpdateAssemblies) to the STE. However, it will be automatically updated in a maximum of one hour</h2>
-        	{% endif %}
+			<h2>The upload to the Repository wasn't successful, do you wand to retry?</h2>
+			<form action="/aku/4/" method="POST">
+			  <dl>
+				{{ form.hidden_tag() }}
+			  </dl>
+			  <input type=submit name="btn" value='Retry'>
+			  <input type=submit name="btn" value='Cancel'>
+			</form>
+		{% else %}
+			{% if svnstatus[1] and (svnstatus[0] or force) and not completed[2] %}
+				<h2>The Upload to the repository was successful, but the system wasn't able to send the update command
+					(UpdateAssemblies) to the STE. However, it will be automatically updated in a maximum of one hour</h2>
+				{% endif %}
 
-	{% endif %} 
-
-
+	{% endif %}
 
 
 
 
 
+</div>
+{% endblock %}
 
 
-</body>
-</html>
+

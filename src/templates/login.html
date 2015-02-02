@@ -1,20 +1,21 @@
-{% from "_formhelpers.html" import render_field %}
-<title>AKU Login</title>
-<h1>Login</h1>
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-<form method=POST action="/login">
-  <dl>
-  	{{ form.hidden_tag() }}
-    {{ render_field(form.username) }}
-    {{ render_field(form.password) }}
-  </dl>
-  <p><input type=submit value=Login>
-</form>
+{% extends 'layout.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block content %}
+<div class="container">
+  <h1>Log In</h1>
+
+  <h3>Please log in to access all of AKUs features</h3>
+    <br/>
+  {{ wtf.quick_form(form, button_map={'submit_button': 'primary'}) }}
+
+</div>
+{% endblock %}
+
+
+
+
+
+
+

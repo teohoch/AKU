@@ -1,14 +1,12 @@
-{% from "_formhelpers.html" import render_field %}
-<title>AKU</title>
-<h1>Ticket Information</h1>
-<form action="/aku/1/" method="POST" enctype="multipart/form-data">
-  <dl>
-    {{ form.hidden_tag() }}
-    {{ render_field(form.STE) }}
-      <br/>
-    {{ render_field(form.Device) }}
-      <br/>
-    {{ render_field(form.Ticket) }}
-  </dl>
-  <p><input type=submit value=send>
-</form>
+{% extends 'layout.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block content %}
+<div class="container">
+	<h1>Ticket Information</h1>
+    <br/>
+  {{ wtf.quick_form(form, action='/aku/1/', button_map={'submit_button': 'primary'}) }}
+
+</div>
+{% endblock %}

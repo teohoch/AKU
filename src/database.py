@@ -96,7 +96,7 @@ class Aku_Database(Database):
 		Returns all the STE's present in the Database
 		:return: All the STE's in the Database
 		"""
-		command = "SELECT name FROM ste;"
+		command = "SELECT id, name FROM ste;"
 		return self.executeReadSQL(command)
 
 	def get_all_devices(self):
@@ -105,6 +105,13 @@ class Aku_Database(Database):
 		:return: List of all devices, eac device in the form [value, name]
 		"""
 		command = "SELECT value, name FROM device;"
+		return self.executeReadSQL(command)
+	def get_all_devices_with_id(self):
+		"""
+		Returns all the devices in the Database
+		:return: List of all devices, eac device in the form [value, name]
+		"""
+		command = "SELECT id, name FROM device;"
 		return self.executeReadSQL(command)
 
 	def get_device_from_value(self, value):
@@ -135,7 +142,7 @@ class Aku_Database(Database):
 
 		if data['device']=="IFProc":
 			scheme += ", serial_number"
-			values += "', " + str(serial)
+			values += ", " + str(serial)
 
 		scheme += ") "
 		values += ");"
@@ -145,9 +152,10 @@ class Aku_Database(Database):
 		try:
 			self.executeWriteSQL(command)
 			return True
-		except:
+		except Exception as e:
 			print 'error in sqlwrite'
-			return False
+			print e
+			raise
 
 	def get_all_uploads(self):
 		command = 'SELECT * FROM uploads ORDER BY date DESC LIMIT;'

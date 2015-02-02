@@ -1,18 +1,53 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-{% for upload in uploads %}
-	{{ upload[4] }}
-	{{ upload[5] }}
-	{{ upload[6] }}
-    <br/>
+{% extends 'layout.html' %}
+{% block content %}
+    <link rel="stylesheet" href="{{url_for('.static', filename='table.css')}}">
+    <div class="container">
+    <h1>Latest 15 uploads:</h1>
+    </div>
+    <div class="container">
+		<div class="CSSTableGenerator">
+			<table>
+				<tr>
+					<th>Time/Date</th>
+					<th>Ticket Number</th>
+					<th>Username</th>
+					<th>Filename</th>
+					<th>Action</th>
+					<th>Device</th>
+					<th>Serial</th>
+					<th>STE</th>
+				</tr>
+				{% for u in uploads %}
+					<tr>
+						<td>{{ u[8] }}</td>
+						<td>{{ u[3] }}</td>
+						<td>{{ u[5] }}</td>
+						<td>{{ u[4] }}</td>
+						<td>
+							{% if u[6] %}
+								Added
+							{% else %}
+								Updated
+							{% endif %}
+						</td>
+						<td>{{ device_dic[u[2]] }}</td>
+						<td>{{ u[7] }}</td>
+						<td>{{ ste_dic[u[1]] }}</td>
 
-{% endfor %}
+
+					</tr>
 
 
-</body>
-</html>
+				{% endfor %}
+
+			</table>
+		</div>
+    </div>
+
+
+{% endblock %}
+
+
+
+
+

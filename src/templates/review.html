@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>AKU Review</title>
-</head>
-<body>
-    <h1>Review Configuration</h1>
-    <table style="border: 1px solid black;" border="1">
+{% extends 'layout.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block content %}
+<div class="container">
+	<link rel="stylesheet" href="{{url_for('.static', filename='table.css')}}">
+	<h1>Review Configuration</h1>
+    <table class='table table-responsive'>
         <tr>
             <td>Destination STE</td>
             <td>{{ session['ste'] }}</td>
@@ -28,6 +28,6 @@
             <td>{{ session['serial'] }}</td>
       {% endif %}
     </table>
-    <a href="/aku/4/"><h3>Esta todo Bien :)</h3></a>
-</body>
-</html>
+	<a href="/aku/4/" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-ok"></span> Everything is OK</a>
+</div>
+{% endblock %}
