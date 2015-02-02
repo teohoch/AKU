@@ -10,14 +10,15 @@ from ldapconnection import validateLDAP_test as ld
 from flask.ext.login import LoginManager, login_user, UserMixin, login_required, logout_user, current_user
 from flask_bootstrap import Bootstrap
 from helpers import *
+import config
 
 
 
 
 app = Flask(__name__)
 
-app.config.from_object('config')
-app.debug = False
+app.config.from_object(config)
+app.debug = True
 app.jinja_env.autoescape = False
 
 

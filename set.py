@@ -37,7 +37,7 @@ def create_config():
 
 	# Set the URL for the SVN Repository
 	config.add_section('SVN')
-	config.set('SVN', 'URL','http://localhost/svn/almarepo/')
+	config.set('SVN', 'URL','https://alma-repo-test.googlecode.com/svn/trunk/')
 	config.set('SVN', 'PATH_IN_REPO', 'TMCDB_DATA/')
 
 	cfg_file = open(join(AKU_Files, 'Configuration/conf.ini'), 'w')
@@ -65,9 +65,13 @@ def create_database():
 def copy_necessary_files():
 	my_path = 'xmlschemas'
 	only_files = [f for f in listdir(my_path) if (isfile(join(my_path,f)))]
+	print(only_files)
 	for file in only_files:
-		copy2(join(my_path, file), config.get('Locations', 'XmlSchemas'))
-
+		try:
+			copy2(join(my_path, file), config.get('Locations', 'XmlSchemas'))
+		except Exception as e:
+			print(e)
+			raise e
 
 
 

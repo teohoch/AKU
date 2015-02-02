@@ -35,8 +35,9 @@ class SecureKey():
 		self.storageLocation = Config.get('Locations', 'SecureStorage')
 		self.passLocation = join(self.storageLocation, key)
 		self.salt = self.__get_salt_for_key()
-		if isfile('./' + self.key + '.p') and isfile('./' + self.key):
+		if isfile(self.storageLocation+'/' + self.key + '.p') and isfile(self.storageLocation+'/' + self.key):
 			self.__load_db()
+
 
 
 	def __load_db(self):

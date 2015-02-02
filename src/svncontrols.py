@@ -117,8 +117,11 @@ class AkuSvn():
 			action = ('added' if doaction else 'updated')
 			message += " has been " + action + ' by ' + user + ' according to '
 
-			self.client.checkin(self.destinationPath, message, recurse=True)
-			remove(join(filepath, filename))
+			try:
+				print self.client.checkin(self.destinationPath, message, recurse=True)
+				remove(join(filepath, filename))
+			except Exception as e:
+				print e
 
 		print([doaction, status, out_message])
 		return [doaction, status, out_message]
