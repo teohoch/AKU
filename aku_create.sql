@@ -27,38 +27,37 @@ CREATE TABLE IF NOT EXISTS uploads (
     FOREIGN KEY (device_id) REFERENCES device (id)
 );
 
-INSERT INTO device (name, value) VALUES
-	('ColdCart3', 'ColdCart3'),
-	('ColdCart4', 'ColdCart4'),
-	('ColdCart5', 'ColdCart5'),
-	('ColdCart6', 'ColdCart6'),
-	('ColdCart7', 'ColdCart7'),
-	('ColdCart8', 'ColdCart8'),
-	('ColdCart9', 'ColdCart9'),
-	('ColdCart10', 'ColdCart10'),
-	('WCA3', 'WCA3'),
-	('WCA4', 'WCA4'),
-	('WCA5', 'WCA5'),
-	('WCA6', 'WCA6'),
-	('WCA7', 'WCA7'),
-	('WCA8', 'WCA8'),
-	('WCA9', 'WCA9'),
-	('WCA10', 'WCA10'),
-	('Cryostat', 'Cryostat'),
-	('DTX', 'DTX_new'),
-	('IFProc', 'IFProc'),
-	('LPR', 'LPR'),
-	('Mount', 'Mount'),
-	('PDA', 'PDA');
+INSERT INTO device (name, value) SELECT 'ColdCart3' AS name, 'ColdCart3' AS value
+  UNION SELECT 'ColdCart4', 'ColdCart4'
+	UNION SELECT 'ColdCart5', 'ColdCart5'
+	UNION SELECT 'ColdCart6', 'ColdCart6'
+	UNION SELECT 'ColdCart7', 'ColdCart7'
+	UNION SELECT 'ColdCart8', 'ColdCart8'
+	UNION SELECT 'ColdCart9', 'ColdCart9'
+	UNION SELECT 'ColdCart10', 'ColdCart10'
+	UNION SELECT 'WCA3', 'WCA3'
+	UNION SELECT 'WCA4', 'WCA4'
+	UNION SELECT 'WCA5', 'WCA5'
+	UNION SELECT 'WCA6', 'WCA6'
+	UNION SELECT 'WCA7', 'WCA7'
+	UNION SELECT 'WCA8', 'WCA8'
+	UNION SELECT 'WCA9', 'WCA9'
+	UNION SELECT 'WCA10', 'WCA10'
+	UNION SELECT 'Cryostat', 'Cryostat'
+	UNION SELECT 'DTX', 'DTX_new'
+	UNION SELECT 'IFProc', 'IFProc'
+	UNION SELECT 'LPR', 'LPR'
+	UNION SELECT 'Mount', 'Mount'
+	UNION SELECT 'PDA', 'PDA';
 
-INSERT INTO ste (name) VALUES
-	('AOS'),
-	('TFINT'),
-	('TFSD'),
-	('TFOHG'),
-	('TFENG'),
-	('FE-LAB'),
-	('BE-LAB');
+INSERT INTO ste (name) SELECT 'AOS' AS name
+      UNION SELECT 'TFINT'
+      UNION SELECT 'TFSD'
+      UNION SELECT 'TFOHG'
+      UNION SELECT 'TFENG'
+      UNION SELECT 'FE-LAB'
+      UNION SELECT 'BE-LAB';
+
 
 
 

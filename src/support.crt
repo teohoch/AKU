@@ -1,0 +1,67 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 3 (0x3)
+        Signature Algorithm: md5WithRSAEncryption
+        Issuer: C=EU, ST=Muenchen, L=Garching, O=ESO, OU=ALMA, CN=ste-support.hq.eso.org/emailAddress=ldiez@eso.org
+        Validity
+            Not Before: Apr  4 10:45:57 2008 GMT
+            Not After : Apr  2 10:45:57 2018 GMT
+        Subject: C=EU, ST=Muenchen, L=Garching, O=ESO, OU=ALMA, CN=support/emailAddress=ldiez@eso.org
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+            RSA Public Key: (1024 bit)
+                Modulus (1024 bit):
+                    00:c2:b7:71:46:f5:4f:b7:69:43:8f:24:fb:ab:54:
+                    e5:a9:e9:56:af:73:19:2d:2b:c3:2a:85:f0:cb:22:
+                    97:3a:49:63:15:69:35:41:e3:b3:a3:8a:28:df:fd:
+                    ee:03:03:1b:59:f6:8f:f9:a5:62:ad:ec:7e:1e:53:
+                    01:9e:23:a8:4e:f6:c8:f1:dd:d3:65:8e:88:8a:41:
+                    42:ac:01:12:cc:35:46:10:9d:5b:6a:b2:f8:b9:ee:
+                    2c:df:8a:a4:2a:17:b7:28:aa:4b:f2:f5:db:2f:37:
+                    ce:f2:00:22:3f:f6:96:bc:2a:2e:36:ef:2c:59:2c:
+                    59:52:ac:5e:18:92:d9:a0:eb
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+            CA:FALSE
+            Netscape Comment: 
+            OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+            70:EA:A9:45:26:25:78:A6:D4:9A:14:A8:DE:61:97:27:8E:4F:97:7B
+            X509v3 Authority Key Identifier: 
+            keyid:8D:B4:9E:0C:C6:B8:41:95:2E:3F:D0:1F:7C:1C:D3:89:17:74:BF:4C
+            DirName:/C=EU/ST=Muenchen/L=Garching/O=ESO/OU=ALMA/CN=ste-support.hq.eso.org/emailAddress=ldiez@eso.org
+            serial:00
+
+    Signature Algorithm: md5WithRSAEncryption
+        62:84:0a:ec:c8:2f:4d:1f:a6:4a:0b:91:ed:84:16:08:fa:e4:
+        5e:34:19:de:51:a3:92:a2:2c:38:5b:48:15:ba:21:10:4c:cd:
+        a0:03:f4:4a:86:24:77:e4:2a:a7:60:95:f0:57:86:e6:1e:49:
+        df:0e:5a:a0:f9:2f:8e:39:d0:59:b8:f7:3b:33:be:0a:e8:82:
+        91:48:60:a1:37:c9:b8:00:63:61:21:fc:0e:18:b8:0d:50:21:
+        09:2c:91:31:d9:d7:92:2e:1d:7f:79:cc:68:08:02:09:28:4d:
+        8d:af:09:11:40:9e:17:45:0e:b1:fb:88:1c:cc:f3:02:0c:c3:
+        25:8d
+-----BEGIN CERTIFICATE-----
+MIIDpDCCAw2gAwIBAgIBAzANBgkqhkiG9w0BAQQFADCBjzELMAkGA1UEBhMCRVUx
+ETAPBgNVBAgTCE11ZW5jaGVuMREwDwYDVQQHEwhHYXJjaGluZzEMMAoGA1UEChMD
+RVNPMQ0wCwYDVQQLEwRBTE1BMR8wHQYDVQQDExZzdGUtc3VwcG9ydC5ocS5lc28u
+b3JnMRwwGgYJKoZIhvcNAQkBFg1sZGllekBlc28ub3JnMB4XDTA4MDQwNDEwNDU1
+N1oXDTE4MDQwMjEwNDU1N1owgYAxCzAJBgNVBAYTAkVVMREwDwYDVQQIEwhNdWVu
+Y2hlbjERMA8GA1UEBxMIR2FyY2hpbmcxDDAKBgNVBAoTA0VTTzENMAsGA1UECxME
+QUxNQTEQMA4GA1UEAxMHc3VwcG9ydDEcMBoGCSqGSIb3DQEJARYNbGRpZXpAZXNv
+Lm9yZzCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAwrdxRvVPt2lDjyT7q1Tl
+qelWr3MZLSvDKoXwyyKXOkljFWk1QeOzo4oo3/3uAwMbWfaP+aVirex+HlMBniOo
+TvbI8d3TZY6IikFCrAESzDVGEJ1barL4ue4s34qkKhe3KKpL8vXbLzfO8gAiP/aW
+vCouNu8sWSxZUqxeGJLZoOsCAwEAAaOCARswggEXMAkGA1UdEwQCMAAwLAYJYIZI
+AYb4QgENBB8WHU9wZW5TU0wgR2VuZXJhdGVkIENlcnRpZmljYXRlMB0GA1UdDgQW
+BBRw6qlFJiV4ptSaFKjeYZcnjk+XezCBvAYDVR0jBIG0MIGxgBSNtJ4MxrhBlS4/
+0B98HNOJF3S/TKGBlaSBkjCBjzELMAkGA1UEBhMCRVUxETAPBgNVBAgTCE11ZW5j
+aGVuMREwDwYDVQQHEwhHYXJjaGluZzEMMAoGA1UEChMDRVNPMQ0wCwYDVQQLEwRB
+TE1BMR8wHQYDVQQDExZzdGUtc3VwcG9ydC5ocS5lc28ub3JnMRwwGgYJKoZIhvcN
+AQkBFg1sZGllekBlc28ub3JnggEAMA0GCSqGSIb3DQEBBAUAA4GBAGKECuzIL00f
+pkoLke2EFgj65F40Gd5Ro5KiLDhbSBW6IRBMzaAD9EqGJHfkKqdglfBXhuYeSd8O
+WqD5L4450Fm49zszvgrogpFIYKE3ybgAY2Eh/A4YuA1QIQkskTHZ15IuHX95zGgI
+AgkoTY2vCRFAnhdFDrH7iBzM8wIMwyWN
+-----END CERTIFICATE-----
