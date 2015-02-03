@@ -6,7 +6,7 @@ from xmlverification import XmlVerification
 from database import Aku_Database
 from svncontrols import AkuSvn
 from sshconnection import ssh_update_assemblies
-from ldapconnection import validateLDAP_test as ld
+from ldapconnection import validateLDAP as ld
 from flask.ext.login import LoginManager, login_user, UserMixin, login_required, logout_user, current_user
 from flask_bootstrap import Bootstrap
 from helpers import *
