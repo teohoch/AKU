@@ -109,6 +109,8 @@ def loader(form):
 			session['filename'] = filename
 		if session['device'] == 'IFProc':
 			session['serial'] = form.Serial.data
+		else:
+			session['serial']=None
 		return redirect('/aku/3/')
 	return render_template('upload.html',upload=True, form=form)
 
