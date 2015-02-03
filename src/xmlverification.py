@@ -30,8 +30,11 @@ class XmlVerification():
 
 	def correspond_to_device(self):
 		try:
-			subprocess.check_output(['grep','-c', self.device, self.filename])
-			return [True,'File corresponds to the inputted device.']
+			p = subprocess.Popen(["grep", '-c', self.device, self.filename], stdout=subprocess.PIPE)
+			if p.communicate()[0][0]=='1':
+				return [True,'File corresponds to the inputted device.']
+			else:
+				return [False, "File doesn't correspond to the inputted device."]
 		except subprocess.CalledProcessError:
 			return [False, "File doesn't correspond to the inputted device."]
 
