@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/bin/python
 
 from os import mkdir, listdir
 from os.path import abspath, isdir, join, isfile
