@@ -119,8 +119,8 @@ def favicon():
 
 @app.route('/update/')
 def enforce_update():
-	print ssh_update_assemblies(session['ste'])
-	return 'hello'
+
+	return str(ssh2('AOS'))
 
 
 
