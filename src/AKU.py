@@ -219,10 +219,10 @@ def aku(number=1):
 		                       force=force, form=form, completed=completed)
 
 
-@app.route('/update/')
-def enforce_update():
-	ssh_update_assemblies(session['ste'])
-	return 'hello'
+	@app.route('/update/')
+	def enforce_update():
+		ssh_update_assemblies(session['ste'])
+		return 'hello'
 
 
 
