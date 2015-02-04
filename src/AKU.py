@@ -9,7 +9,7 @@ from forms import *
 from xmlverification import XmlVerification
 from database import Aku_Database
 from svncontrols import AkuSvn
-from sshconnection import ssh_update_assemblies
+from sshconnection import ssh_update_assemblies, ssh2
 from ldapconnection import validateLDAP as ld
 from helpers import *
 import config
