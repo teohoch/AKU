@@ -1,18 +1,18 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash, send_from_directory
 import os
+
+from flask import Flask, render_template, request, redirect, url_for, session, flash, send_from_directory
 from werkzeug.utils import secure_filename
+from flask.ext.login import LoginManager, login_user, UserMixin, login_required, logout_user, current_user
+from flask_bootstrap import Bootstrap
+
 from forms import *
 from xmlverification import XmlVerification
 from database import Aku_Database
 from svncontrols import AkuSvn
 from sshconnection import ssh_update_assemblies
 from ldapconnection import validateLDAP as ld
-from flask.ext.login import LoginManager, login_user, UserMixin, login_required, logout_user, current_user
-from flask_bootstrap import Bootstrap
 from helpers import *
 import config
-
-
 
 
 app = Flask(__name__)
@@ -214,14 +214,15 @@ def aku(number=1):
 		completed = [uploaded, registered, updated]
 
 
-
-
 		return render_template('xmlanalysis.html', upload=True,analicis_status=checks, status=status, svnstatus=svn_status,
 		                       filename= file_processed, db_status=db_status, ssh_status=ssh_status, ste=session['ste'],
 		                       force=force, form=form, completed=completed)
 
 
-
+@app.route('/update/')
+def enforce_update():
+	ssh_update_assemblies(session['ste'])
+	return 'hello'
 
 
 
