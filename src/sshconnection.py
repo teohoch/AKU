@@ -14,6 +14,7 @@ def ssh_update_assemblies(ste):
 		if not s.login (host, username=user,password=password):
 			#print "SSH session failed on login."
 			#print str(s)
+			print 'no Login'
 			return False
 		else:
 			#print "SSH session login successful"
@@ -22,6 +23,7 @@ def ssh_update_assemblies(ste):
 			#print s.before     # print everything before the prompt.
 			s.logout()
 			return True
-	except:
+	except Exception as e:
+		print e
 		return False
 
