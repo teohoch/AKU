@@ -9,7 +9,7 @@ from forms import *
 from xmlverification import XmlVerification
 from database import Aku_Database
 from svncontrols import AkuSvn
-from sshconnection import ssh_update_assemblies, ssh2
+from sshconnection import ssh_update_assemblies
 from ldapconnection import validateLDAP as ld
 from helpers import *
 import config
@@ -119,8 +119,7 @@ def favicon():
 
 @app.route('/update/')
 def enforce_update():
-
-	return str(ssh2('AOS'))
+	return str(ssh_update_assemblies('AOS'))
 
 
 
