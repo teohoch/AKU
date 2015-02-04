@@ -1,10 +1,14 @@
+#!/usr/local/bin/python
+
 from os import mkdir, listdir
 from os.path import abspath, isdir, join, isfile
 from shutil import copy2
 import ConfigParser
 import sqlite3 as lite
+
 from src.secure_storage import setup as SecureSetup
 from src.svncontrols import setup as SvnSetup
+
 
 directories_to_create = ['SecureStorage', 'SvnRepository', 'Uploads', 'Database','XmlSchemas']
 AKU_Files = abspath(raw_input("'Please enter where do you want to store AKU's Files: \n"))
