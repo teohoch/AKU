@@ -1,4 +1,4 @@
-import pxssh
+import paramiko
 
 def ssh_update_assemblies(ste):
 	"""
@@ -9,21 +9,18 @@ def ssh_update_assemblies(ste):
 	host = ste + '-gns.osf.alma.cl'
 	user = 'jreveco'
 	password = 'mynewshinypass'
+
+	client = paramiko.SSHClient()
+	client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
 	try:
-		s = pxssh.pxssh()
-		if not s.login (host, username=user,password=password):
-			#print "SSH session failed on login."
-			#print str(s)
-			print 'no Login'
-			return False
-		else:
-			#print "SSH session login successful"
-			s.sendline ('./updateAssembliesFake')
-			s.prompt()         # match the prompt
-			#print s.before     # print everything before the prompt.
-			s.logout()
-			return True
-	except Exception as e:
-		print e
+		client.connect(host, username=user, password=password)
+		stdin, stdout, stderr = client.exec_command('./updateAssembliesFake')
+		client.close()
+		return True
+	except:
+		client.close()
 		return False
+
+
 
