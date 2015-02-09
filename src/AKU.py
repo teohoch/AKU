@@ -66,7 +66,7 @@ def load_user(userid):
 
 
 
-@app.route('/')
+@app.route('/history/')
 def index():
 	uploads = db.get_n_uploads(15)
 	return render_template('Index.html',home=True, uploads=uploads, ste_dic=to_dictionary(ste),device_dic=to_dictionary(db.get_all_devices_with_id()))
@@ -111,7 +111,7 @@ def loader(form):
 			session['serial'] = form.Serial.data
 		else:
 			session['serial']=None
-		return redirect('/aku/3/')
+		return redirect('/aku/4/')
 	return render_template('upload.html',upload=True, form=form)
 
 def favicon():
@@ -123,6 +123,7 @@ def enforce_update():
 
 
 
+@app.route('/')
 @app.route('/aku/')
 @app.route('/aku/<int:number>/', methods=['GET', 'POST'])
 @login_required

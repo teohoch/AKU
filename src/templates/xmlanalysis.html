@@ -18,9 +18,12 @@
 				<span style="color: red">FAILURE</span></li></h2>
 			{% endif %}
 			<ul>
-				{% for item in analicis_status %}
-					<li {% if not item[0]  %} style="color: red" {% endif %}>{{ item[1] }}</li>
-				{% endfor %}
+            	{% if not status %}
+            		{% for item in analicis_status %}
+						<li {% if not item[0]  %} style="color: red" {% endif %}>{{ item[1] }}</li>
+					{% endfor %}
+            	{% endif %}
+
 			</ul>
 
 		<h2><li>Upload to the ALMA Configuration Repository was a:
