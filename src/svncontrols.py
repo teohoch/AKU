@@ -39,7 +39,7 @@ class AkuSvn():
 		self.client.checkout(self.URL, self.destinationPath)
 
 
-	def __callback_ssl_server_trust_prompt( trust_data ):
+	def __callback_ssl_server_trust_prompt(self, trust_data ):
 		return True, trust_data['failures'], True
 
 	def __get_login(self, realm, username, may_save):
