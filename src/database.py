@@ -164,3 +164,7 @@ class Aku_Database(Database):
 	def get_n_uploads(self, n):
 		command = 'SELECT * FROM uploads ORDER BY date DESC LIMIT ' + str(n) + ';'
 		return self.executeReadSQL(command)
+
+	def get_device_regex(self, device):
+		command = "SELECT regex, regex_message FROM device WHERE name=='" + device+ "';"
+		return self.executeReadSQL(command)[0]

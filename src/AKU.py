@@ -12,6 +12,7 @@ from svncontrols import AkuSvn
 from sshconnection import ssh_update_assemblies
 from ldapconnection import validateLDAP as ld
 from helpers import *
+from customValidators import nameValidation
 import config
 
 
@@ -19,7 +20,7 @@ app = Flask(__name__)
 
 app.config.from_object(config)
 app.debug = True
-app.jinja_env.autoescape = False
+app.jinja_env.autoescape = True
 
 
 Bootstrap(app)
@@ -112,6 +113,9 @@ def loader(form):
 		else:
 			session['serial']=None
 		return redirect('/aku/4/')
+	reg = db.get_device_regex(session['device'])
+	print reg
+	form.conf.validators.append(nameValidation(reg[0],reg[1],session['device']))
 	return render_template('upload.html',upload=True, form=form)
 
 def favicon():
