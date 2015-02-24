@@ -34,8 +34,13 @@ class AkuSvn():
 		self.destinationPath = config.get('Locations', 'SvnRepository')
 		self.pathInRepo = config.get('SVN', 'PATH_IN_REPO')
 		self.client = pysvn.Client()
+		self.client.callback_ssl_server_trust_prompt = self.__callback_ssl_server_trust_prompt
 		self.client.callback_get_login = self.__get_login
 		self.client.checkout(self.URL, self.destinationPath)
+
+
+	def __callback_ssl_server_trust_prompt( trust_data ):
+		return True, trust_data['failures'], True
 
 	def __get_login(self, realm, username, may_save):
 		user = SecureKey('SvnUser', self.configPath)
