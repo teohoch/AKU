@@ -41,7 +41,7 @@ def create_config():
 
 	# Set the URL for the SVN Repository
 	config.add_section('SVN')
-	config.set('SVN', 'URL','https://alma-repo-test.googlecode.com/svn/trunk/')
+	config.set('SVN', 'URL','https://svn.alma.cl/p2/trunk/ITS/config/CDB-COMMON/TMCDB_DATA/')
 	config.set('SVN', 'PATH_IN_REPO', 'TMCDB_DATA/')
 
 	cfg_file = open(join(AKU_Files, 'Configuration/conf.ini'), 'w')
