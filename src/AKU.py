@@ -215,7 +215,7 @@ def aku(number=1):
 					'username' : current_user.username}
 				db_status = db.add_upload(data)
 
-				ssh_status = ssh_update_assemblies(session['ste'], app.config['CONFIGURATION_PATH'], './updateAssembliesFake')
+				ssh_status = ssh_update_assemblies(session['ste'], app.config['CONFIGURATION_PATH'], 'updateAssemblies')
 
 		uploaded = status and svn_status[1]
 		registered = uploaded and db_status
