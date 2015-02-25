@@ -1,10 +1,10 @@
 import subprocess
 import ConfigParser
-
 from lxml import etree
 from xml.dom.minidom import parse
 from os.path import join
 
+from database import Aku_Database
 from xmlProcessing.integratedFreqCheck import freq_order_check
 from xmlProcessing.integratedPolarizationAngle import polarization_check
 from xmlProcessing.ifpProccesing import ifpgenerator
@@ -19,7 +19,7 @@ class XmlVerification():
 		self.conf_path = conf_path
 		self.filename = filename
 		self.device = device
-		self.SCHEMA_PATH = self.config.get('Locations', 'XmlSchemas')
+		self.SCHEMA_PATH = self.config.get('Locations', 'svnrepository')
 
 	def xml_well_formed(self):
 		try:
@@ -39,7 +39,8 @@ class XmlVerification():
 			return [False, "File doesn't correspond to the inputted device."]
 
 	def validate_scheme(self):
-		f = open(join(self.SCHEMA_PATH, (self.device.lower()+'.xsd')))
+		db = Aku_Database(self.conf_path)
+		f = open(join(self.SCHEMA_PATH, (db.get_device_scheme(self.device))))
 		schema_doc = etree.parse(f)
 		schema = etree.XMLSchema(schema_doc)
 

@@ -168,3 +168,7 @@ class Aku_Database(Database):
 	def get_device_regex(self, device):
 		command = "SELECT regex, regex_message FROM device WHERE name=='" + device+ "';"
 		return self.executeReadSQL(command)[0]
+
+	def get_device_scheme(self, device):
+		command = "SELECT scheme_file FROM device WHERE name=='" + device+ "';"
+		return self.executeReadSQL(command)[0]

@@ -1,10 +1,12 @@
-from pbkdf2 import PBKDF2
 from Crypto.Cipher import AES
 from os.path import isfile,join
 import os
 import base64
 import pickle
 import ConfigParser
+
+from pbkdf2 import PBKDF2
+
 
 
 ### Settings ###
@@ -124,4 +126,4 @@ def setup(path):
 
 if __name__ == '__main__':
 
-	setup(os.path.abspath('../Configuration/conf.ini'))
+	path = (os.path.abspath('../Configuration/conf.ini'))

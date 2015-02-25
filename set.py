@@ -1,17 +1,18 @@
 #!/usr/bin/python
 
-from os import mkdir, listdir
+from os import mkdir, path
 from os.path import abspath, isdir, join, isfile
-from shutil import copy2
+from shutil import copy2, rmtree
 import ConfigParser
 import sqlite3 as lite
+import argparse
 
 from src.secure_storage import setup as SecureSetup
 from src.svncontrols import setup as SvnSetup
 
 
-directories_to_create = ['SecureStorage', 'SvnRepository', 'Uploads', 'Database','XmlSchemas']
-AKU_Files = abspath(raw_input("'Please enter where do you want to store AKU's Files: \n"))
+directories_to_create = ['SecureStorage', 'SvnRepository', 'Uploads', 'Database']
+AKU_Files = ''
 config = ConfigParser.ConfigParser()
 
 
@@ -32,6 +33,7 @@ def create_directories():
 def create_config():
 
 	config.add_section('Locations')
+	config.set('Locations', "AkuFiles" , abspath(join(AKU_Files, "AkuFiles/")))
 
 	for dire in directories_to_create:
 		config.set('Locations', dire, abspath(join(AKU_Files, "AkuFiles/", dire)))
@@ -65,26 +67,33 @@ def create_database():
 	# Copy seed file to Database Directory
 	copy2('aku_create.sql',join(config.get('Locations', 'Database')))
 
-
-def copy_necessary_files():
-	my_path = 'xmlschemas'
-	only_files = [f for f in listdir(my_path) if (isfile(join(my_path,f)))]
-	print(only_files)
-	for file in only_files:
-		try:
-			copy2(join(my_path, file), config.get('Locations', 'XmlSchemas'))
-		except Exception as e:
-			print(e)
-			raise e
+parser = argparse.ArgumentParser()
 
 
+parser.add_argument('-d', dest='create_database', action='store_true', help='Create database for AKU')
+parser.add_argument('-wipe',dest='wipe', action='store_true', help='Erase Current AkuFiles, if they exist')
+parser = parser.parse_args()
 
-create_directories()
-create_config()
-create_database()
-copy_necessary_files()
+if parser.create_database:
+	config.read(path.abspath(path.join(path.dirname(path.abspath(__file__)), 'Configuration/conf.ini')))
+	create_database()
+elif parser.wipe:
+	if isfile(path.abspath(path.join(path.dirname(path.abspath(__file__)), 'Configuration/conf.ini'))):
+		config2 = ConfigParser.ConfigParser()
+		config2.read(path.abspath(path.join(path.dirname(path.abspath(__file__)), 'Configuration/conf.ini')))
+		rmtree(config2.get('Locations', 'AkuFiles'))
+else:
+	if parser.wipe:
+		if isfile(path.abspath(path.join(path.dirname(path.abspath(__file__)), 'Configuration/conf.ini'))):
+			config2 = ConfigParser.ConfigParser()
+			config2.read(path.abspath(path.join(path.dirname(path.abspath(__file__)), 'Configuration/conf.ini')))
+			rmtree(config2.get('Locations','AkuFiles'))
 
-SecureSetup('Configuration/conf.ini')
-SvnSetup('Configuration/conf.ini')
+	AKU_Files = abspath(raw_input("'Please enter where do you want to store AKU's Files: \n"))
+	create_directories()
+	create_config()
+
+	SecureSetup('Configuration/conf.ini')
+	SvnSetup('Configuration/conf.ini')
 
 
