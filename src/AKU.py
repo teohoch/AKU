@@ -15,6 +15,9 @@ from helpers import *
 from customValidators import nameValidation
 import config
 
+# Delete this one
+import getpass
+
 
 app = Flask(__name__)
 
@@ -64,9 +67,6 @@ class User(UserMixin):
 def load_user(userid):
     return User(uid=userid)
 
-
-
-
 @app.route('/history/')
 def index():
 	uploads = db.get_n_uploads(15)
@@ -87,8 +87,7 @@ def login():
 
 @app.route('/favicon.ico/')
 def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'),
-                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route("/logout", methods=["GET", "POST"])
 @login_required
@@ -143,7 +142,7 @@ def aku(number=1):
 			session['ste'] = form.STE.data
 			session['ticket'] = form.Ticket.data
 			return redirect('/aku/2/')
-		return render_template('ticket.html',upload=True, form=form)
+		return render_template('ticket.html',upload=True, form=form, execuser=getpass.getuser())
 	elif number == 2:
 		if session['device'] == 'IFProc':
 			form = IfpUploadForm()

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
-from os import mkdir, path
-from os.path import abspath, isdir, join, isfile
+from os import mkdir, remove
+from os.path import abspath, isdir, join, isfile, dirname
 from shutil import copy2, rmtree
 import ConfigParser
 import sqlite3 as lite
@@ -46,6 +46,11 @@ def create_config():
 	config.set('SVN', 'URL','https://svn.alma.cl/p2/trunk/ITS/config/CDB-COMMON/TMCDB_DATA/')
 	config.set('SVN', 'PATH_IN_REPO', 'TMCDB_DATA/')
 
+	# Set Configuration for SSH Connection
+	config.add_section('SSH')
+	config.set('SSH', 'USER', raw_input("'Please enter the Username to use when connecting by SSH: \n"))
+	config.set('SSH', 'KEY_FILE', raw_input("'Please enter where the SSH Private Key used for authentication is stored: \n"))
+
 	cfg_file = open(join(AKU_Files, 'Configuration/conf.ini'), 'w')
 	config.write(cfg_file)
 	cfg_file.close()
@@ -75,7 +80,12 @@ parser.add_argument('-wipe',dest='wipe', action='store_true', help='Erase Curren
 parser = parser.parse_args()
 
 if parser.create_database:
-	config.read(path.abspath(path.join(path.dirname(path.abspath(__file__)), 'Configuration/conf.ini')))
+	config.read(abspath(join(dirname(abspath(__file__)), 'Configuration/conf.ini')))
+	if parser.wipe and isfile(config.get('Database', 'path_to_db')):
+		print('Removing current database...')
+		remove(config.get('Database', 'path_to_db'))
+		print('\tDatabase Removed.')
+
 	create_database()
 elif parser.wipe:
 	if isfile(path.abspath(path.join(path.dirname(path.abspath(__file__)), 'Configuration/conf.ini'))):
@@ -84,7 +94,7 @@ elif parser.wipe:
 		rmtree(config2.get('Locations', 'AkuFiles'))
 else:
 	if parser.wipe:
-		if isfile(path.abspath(path.join(path.dirname(path.abspath(__file__)), 'Configuration/conf.ini'))):
+		if isfile(abspath(join(dirname(abspath(__file__)), 'Configuration/conf.ini'))):
 			config2 = ConfigParser.ConfigParser()
 			config2.read(path.abspath(path.join(path.dirname(path.abspath(__file__)), 'Configuration/conf.ini')))
 			rmtree(config2.get('Locations','AkuFiles'))
@@ -92,7 +102,7 @@ else:
 	AKU_Files = abspath(raw_input("'Please enter where do you want to store AKU's Files: \n"))
 	create_directories()
 	create_config()
-
+	create_database()
 	SecureSetup('Configuration/conf.ini')
 	SvnSetup('Configuration/conf.ini')
 
