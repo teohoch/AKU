@@ -88,15 +88,15 @@ if parser.create_database:
 
 	create_database()
 elif parser.wipe:
-	if isfile(path.abspath(path.join(path.dirname(path.abspath(__file__)), 'Configuration/conf.ini'))):
+	if isfile(abspath(join(dirname(abspath(__file__)), 'Configuration/conf.ini'))):
 		config2 = ConfigParser.ConfigParser()
-		config2.read(path.abspath(path.join(path.dirname(path.abspath(__file__)), 'Configuration/conf.ini')))
+		config2.read(abspath(join(dirname(abspath(__file__)), 'Configuration/conf.ini')))
 		rmtree(config2.get('Locations', 'AkuFiles'))
 else:
 	if parser.wipe:
 		if isfile(abspath(join(dirname(abspath(__file__)), 'Configuration/conf.ini'))):
 			config2 = ConfigParser.ConfigParser()
-			config2.read(path.abspath(path.join(path.dirname(path.abspath(__file__)), 'Configuration/conf.ini')))
+			config2.read(abspath(join(dirname(abspath(__file__)), 'Configuration/conf.ini')))
 			rmtree(config2.get('Locations','AkuFiles'))
 
 	AKU_Files = abspath(raw_input("'Please enter where do you want to store AKU's Files: \n"))
