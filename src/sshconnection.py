@@ -3,7 +3,7 @@ import ConfigParser
 import paramiko
 
 
-def ssh_update_assemblies(ste, config_file):
+def ssh_update_assemblies(ste, config_file, command):
 	"""
 	Simple function that connects to the corresponding STE through SSH and runs the UpdateAssemblies command
 	:param ste: The STE where to update
@@ -20,7 +20,7 @@ def ssh_update_assemblies(ste, config_file):
 
 	try:
 		client.connect(host, username=user, pkey=key)
-		stdin, stdout, stderr = client.exec_command('./updateAssembliesFake')
+		stdin, stdout, stderr = client.exec_command(command)
 		client.close()
 		return True
 	except:

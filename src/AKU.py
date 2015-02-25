@@ -122,7 +122,7 @@ def favicon():
 
 @app.route('/update/')
 def enforce_update():
-	return str(ssh_update_assemblies('AOS'))
+	return str(ssh_update_assemblies('AOS', app.config['CONFIGURATION_PATH'],'ls'))
 
 
 
@@ -215,7 +215,7 @@ def aku(number=1):
 					'username' : current_user.username}
 				db_status = db.add_upload(data)
 
-				ssh_status = ssh_update_assemblies(session['ste'])
+				ssh_status = ssh_update_assemblies(session['ste'], app.config['CONFIGURATION_PATH'], './updateAssembliesFake')
 
 		uploaded = status and svn_status[1]
 		registered = uploaded and db_status
