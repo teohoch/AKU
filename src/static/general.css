@@ -4,3 +4,13 @@
     display: table-cell;
     vertical-align: bottom;
 }
+
+div#content {
+    display: block;
+}
+
+div#loading {
+    display: none;
+    cursor: wait;
+
+}

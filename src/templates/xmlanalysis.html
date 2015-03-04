@@ -3,7 +3,24 @@
 
 
 {% block content %}
-<div class="container">
+
+<script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
+<script type=text/javascript>
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    var loader = function (e) {
+        document.getElementById("loading").style.display = 'block';
+        document.getElementById("content").style.display = "none";
+        return true
+    };
+</script>
+
+<div class="container" id="loading">
+    <div class="col-lg-12">
+        <h2>Please wait while we process your upload</h2>
+        <img src="{{ url_for('static', filename='loading.gif') }}" class="img-responsive" style="cursor: wait "/>
+    </div>
+</div>
+<div class="container" id="content">
 {% autoescape false %}
 
 
@@ -86,9 +103,9 @@
 			{% if svnstatus[0] %}
                 there was an internal failure. Try again later.
 			{% else %}
-                the file already exist in the repository, and
+                the file already exist in the repository
 				{% if force %}
-					there was an internal failure. The uploaded file is too different for an automated merge. Please fix manually. These are the differences:
+                    , and there was an internal failure. The uploaded file is too different for an automated merge. Please fix manually. These are the differences:
                     <br/>
                     {{ svnstatus[2] }}
 				{% else %}
@@ -98,9 +115,12 @@
 						  <dl>
 							{{ form.hidden_tag() }}
 						  </dl>
-						  <input type=submit name="btn" value='Confirm Upload'>
+						  <input type=submit name="btn" id="confirm_upload" value='Confirm Upload'>
 						  <input type=submit name="btn" value='Cancel'>
 						</form>
+                        <script>
+                            $('input#confirm_upload').bind('click', loader)
+                        </script>
 					{% else %}
                         <span style="color: red">NO changes</span>  have been made to it. Please make sure you have	the correct file.
                     {% endif %}

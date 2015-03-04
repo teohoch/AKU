@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="{{ url_for('.static', filename='general.css') }}">
+<script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
+<script type=text/javascript>
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
+{% extends 'layout.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block content %}
+
+
+    <div class="container" id="content">
+        <h1>Ticket Information</h1>
+        <br/>
+        {{ wtf.quick_form(form,  action='/_add_numbers', button_map={'submit_button': 'primary'}) }}
+
+    </div>
+    <div id="loading"></div>
+    <p><a href=# id=calculate>calculate server side</a>
+    <script type="text/javascript">
+        var loader = function(e) {
+            document.getElementById("loading").style.display = 'block';
+            document.getElementById("content").style.display = "none";
+            return true
+        };
+        $('input#submit_button').bind('click',loader)
+    </script>
+{% endblock %}

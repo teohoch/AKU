@@ -1,5 +1,6 @@
 import subprocess
 import ConfigParser
+import re
 from lxml import etree
 from xml.dom.minidom import parse
 from os.path import join
@@ -11,15 +12,28 @@ from xmlProcessing.ifpProccesing import ifpgenerator
 
 
 class XmlVerification():
-	def __init__(self, conf_path, filename, device):
+	def __init__(self, conf_path, filename, name):
 
 		self.config = ConfigParser.ConfigParser()
 		self.config.read(conf_path)
 
 		self.conf_path = conf_path
 		self.filename = filename
-		self.device = device
+		self.name = name
+		self.device = self.get_device_from_xml()
 		self.SCHEMA_PATH = join(self.config.get('Locations', 'svnrepository'), self.config.get('SVN', 'path_in_repo'))
+
+		self.db = Aku_Database(self.conf_path)
+
+	def get_device_from_xml(self):
+		file_doc = etree.parse(open(self.filename))
+		val = file_doc.find('ASSEMBLY')
+		val2 = file_doc.find('IFP')
+		if val is not None:
+			return val.values()[0]
+		else:
+			if len(val2) > 0:
+				return 'IFProc'
 
 	def xml_well_formed(self):
 		try:
@@ -39,14 +53,8 @@ class XmlVerification():
 			return [False, "File doesn't correspond to the inputted device."]
 
 	def validate_scheme(self):
-		db = Aku_Database(self.conf_path)
-		a = self.SCHEMA_PATH
-		b = db.get_device_scheme(self.device)
-		c = join(a,b)
-		print a
-		print b
-		print(c)
-		f = open(c)
+
+		f = open(join(self.SCHEMA_PATH, self.db.get_device_scheme(self.device)))
 		schema_doc = etree.parse(f)
 		schema = etree.XMLSchema(schema_doc)
 
@@ -70,6 +78,15 @@ class XmlVerification():
 
 	def ifpProcessing(self, serial):
 		return ifpgenerator(self.filename, serial, self.config.get('Locations','Uploads'))
+
+	def check_correct_device(self):
+		validation = self.db.get_device_regex(self.device)
+		p = re.compile(validation[0])
+		if not re.search(p, self.name):
+			return [False, validation[1]]
+
+		return [True, '']
+
 
 
 

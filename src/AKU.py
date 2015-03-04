@@ -12,11 +12,10 @@ from svncontrols import AkuSvn
 from sshconnection import ssh_update_assemblies
 from ldapconnection import validateLDAP as ld
 from helpers import *
-from customValidators import nameValidation
 import config
 
 # Delete this one
-import getpass
+from time import sleep
 
 
 app = Flask(__name__)
@@ -24,7 +23,6 @@ app = Flask(__name__)
 app.config.from_object(config)
 app.debug = True
 app.jinja_env.autoescape = True
-
 
 Bootstrap(app)
 
@@ -36,41 +34,43 @@ ste = db.get_all_ste()
 devices = db.get_all_devices()
 
 
-
 class User(UserMixin):
-    def __init__(self,uid=None, name=None, passwd=None):
+	def __init__(self, uid=None, name=None, passwd=None):
 
-        self.active = False
+		self.active = False
 
-        ldapres = ld(uid=uid, username=name, password=passwd)
+		ldapres = ld(uid=uid, username=name, password=passwd)
 
-        if ldapres is not None:
-            self.name = ldapres['name']
-            self.username =ldapres['username']
-            self.id = ldapres['id']
+		if ldapres is not None:
+			self.name = ldapres['name']
+			self.username = ldapres['username']
+			self.id = ldapres['id']
 
-            # assume that a disabled user belongs to group 404
-            if ldapres['gid'] != 404:
-                self.active = True
-            self.active = True
+			# assume that a disabled user belongs to group 404
+			if ldapres['gid'] != 404:
+				self.active = True
+			self.active = True
 
-            self.gid = ldapres['gid']
+			self.gid = ldapres['gid']
 
-    def is_active(self):
-        return self.active
+	def is_active(self):
+		return self.active
 
-    def get_id(self):
-        return self.id
+	def get_id(self):
+		return self.id
 
 
 @login_manager.user_loader
 def load_user(userid):
-    return User(uid=userid)
+	return User(uid=userid)
+
 
 @app.route('/history/')
 def index():
 	uploads = db.get_n_uploads(15)
-	return render_template('Index.html',home=True, uploads=uploads, ste_dic=to_dictionary(ste),device_dic=to_dictionary(db.get_all_devices_with_id()))
+	return render_template('Index.html', home=True, uploads=uploads, ste_dic=to_dictionary(ste),
+	                       device_dic=to_dictionary(db.get_all_devices_with_id()))
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -85,45 +85,59 @@ def login():
 			flash("Your username/password is wrong")
 	return render_template("login.html", form=form)
 
+
 @app.route('/favicon.ico/')
 def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+	return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
 
 @app.route("/logout", methods=["GET", "POST"])
 @login_required
 def logout():
-    logout_user()
-    flash("You've been successfully Logged Out")
-    return redirect('/')
+	logout_user()
+	flash("You've been successfully Logged Out")
+	return redirect('/')
+
 
 @login_manager.unauthorized_handler
 def unauthorized():
-    flash('You must first be Logged In to access this feature!')
-    return redirect('/login')
+	flash('You must first be Logged In to access this feature!')
+	return redirect('/login')
+
 
 def loader(form):
-	if form.validate_on_submit():
-		if form.conf:
-			filename = secure_filename(form.conf.data.filename)
-			form.conf.data.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-			session['filename'] = filename
-		if session['device'] == 'IFProc':
-			session['serial'] = form.Serial.data
+	print(form.validate_on_submit())
+	if form.validate_on_submit() and form.conf:
+	# ## Get and check Device!! ###
+
+		session['ste'] = form.STE.data
+		session['ticket'] = form.Ticket.data
+
+		filename = secure_filename(form.conf.data.filename)
+		form.conf.data.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+		session['filename'] = filename
+
+		check = XmlVerification(app.config['CONFIGURATION_PATH'], os.path.join(app.config['UPLOAD_FOLDER'], filename), name=filename)
+		check_d = check.check_correct_device()
+		dev = check.get_device_from_xml()
+		if check_d[0]:
+			session['device'] = check.get_device_from_xml()
+			if not session['device'] == 'IFProc':
+				session['serial'] = None
+			return redirect('/aku/2/')
 		else:
-			session['serial']=None
-		return redirect('/aku/4/')
-	reg = db.get_device_regex(session['device'])
-	print reg
-	form.conf.validators.append(nameValidation(reg[0],reg[1],session['device']))
-	return render_template('upload.html',upload=True, form=form)
+			flash("You are trying to upload a configuration file for "+ dev + ". The correct Filename format is " + check_d[1])
+			return render_template('ticket.html', upload=True, form=form)
+	return render_template('ticket.html', upload=True, form=form)
+
 
 def favicon():
-    return url_for('.static', filename='favicon.ico')
+	return url_for('.static', filename='favicon.ico')
+
 
 @app.route('/update/')
 def enforce_update():
-	return str(ssh_update_assemblies('AOS', app.config['CONFIGURATION_PATH'],'ls'))
-
+	return str(ssh_update_assemblies('AOS', app.config['CONFIGURATION_PATH'], 'ls'))
 
 
 @app.route('/')
@@ -133,37 +147,33 @@ def enforce_update():
 def aku(number=1):
 	if number == 1:
 		form = TicketForm()
-
-		form.Device.choices = devices
 		form.STE.choices = select_field_transform(ste)
-
-		if form.validate_on_submit():
-			session['device'] = form.Device.data
-			session['ste'] = form.STE.data
-			session['ticket'] = form.Ticket.data
-			return redirect('/aku/2/')
-		return render_template('ticket.html',upload=True, form=form, execuser=getpass.getuser())
+		return loader(form)
 	elif number == 2:
-		if session['device'] == 'IFProc':
-			form = IfpUploadForm()
-			return loader(form)
-
+		form = SerialForm()
+		print form.validate_on_submit()
+		print 'hola'
+		if not form.validate_on_submit():
+			print session['device']
+			if session['device'] == 'IFProc':
+				return render_template('serialstop.html',form=form, upload=True)
+			else:
+				return render_template('pitstop.html', upload=True)
 		else:
-			form = UploadForm()
-			return loader(form)
-		form = UploadForm()
-		return render_template('upload.html', upload=True,form=form)
-	elif number == 3:
-		return render_template('review.html',upload=True )
+			session['serial'] = form.Serial.data
+			return render_template('pitstop.html', upload=True)
+	elif number ==3:
+		sleep(5)
+		return 'whiii'
 	elif number == 4:
 		form = Form()
 		force = False
-		if request.method =='POST':
+		if request.method == 'POST':
 			force = (request.form['btn'] == 'Confirm Upload')
 
 			if (request.form['btn'] == 'Cancel'):
 				to_clear = ['filename', 'device', 'ste', 'ticket']
-				if session['device']=='IFProc':
+				if session['device'] == 'IFProc':
 					to_clear.append('serial')
 				for key in to_clear:
 					session[key] = ''
@@ -175,11 +185,11 @@ def aku(number=1):
 		file_processed = session['filename']
 		device_name = db.get_device_from_value(session['device'])[0][0]
 
-		test = XmlVerification(app.config['CONFIGURATION_PATH'],filename, device_name)
+		test = XmlVerification(app.config['CONFIGURATION_PATH'], filename, session['filename'])
 
 		checks = [test.xml_well_formed()]
 		if checks[0][0]:
-			if not session['device']=='IFProc':
+			if not session['device'] == 'IFProc':
 
 				checks.append(test.correspond_to_device())
 				checks.append(test.validate_scheme())
@@ -190,7 +200,7 @@ def aku(number=1):
 						checks.append(test.polarization_angle_check())
 			else:
 				checks.append(test.ifpProcessing(session['serial']))
-				file_processed =  "ifp_%d.xml" %session['serial']
+				file_processed = "ifp_%d.xml" % session['serial']
 
 		status = True
 		svn_status = []
@@ -206,13 +216,13 @@ def aku(number=1):
 
 			if svn_status[1] and (svn_status[0] or force):
 				data = {
-					'ste' : session['ste'],
-					'device' : device_name,
-					'ticket' : session['ticket'],
-					'filename' : file_processed,
-					'action' : svn_status[0],
-					'serial' : session['serial'],
-					'username' : current_user.username}
+					'ste': session['ste'],
+					'device': device_name,
+					'ticket': session['ticket'],
+					'filename': file_processed,
+					'action': svn_status[0],
+					'serial': session['serial'],
+					'username': current_user.username}
 				db_status = db.add_upload(data)
 
 				ssh_status = ssh_update_assemblies(session['ste'], app.config['CONFIGURATION_PATH'], 'updateAssemblies')
@@ -223,14 +233,24 @@ def aku(number=1):
 
 		completed = [uploaded, registered, updated]
 
-
-		return render_template('xmlanalysis.html', upload=True,analicis_status=checks, status=status, svnstatus=svn_status,
-		                       filename= file_processed, db_status=db_status, ssh_status=ssh_status, ste=session['ste'],
+		return render_template('xmlanalysis.html', upload=True, analicis_status=checks, status=status, svnstatus=svn_status,
+		                       filename=file_processed, db_status=db_status, ssh_status=ssh_status, ste=session['ste'],
 		                       force=force, form=form, completed=completed)
 
 
+@app.route('/_add_numbers', methods=['GET', 'POST'])
+def add_numbers():
+	sleep(5)
+	return 'Wake Up!'
 
 
+@app.route('/test')
+def test():
+	form = TicketForm()
+
+	form.Device.choices = devices
+	form.STE.choices = select_field_transform(ste)
+	return render_template('ajaxtest.html', form=form)
 
 
 if __name__ == '__main__':

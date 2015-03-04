@@ -6,7 +6,7 @@
 <div class="container">
 	<h1>Ticket Information</h1>
     <br/>
-  {{ wtf.quick_form(form, action='/aku/1/', button_map={'submit_button': 'primary'}) }}
+  {{ wtf.quick_form(form, action='/aku/1/',enctype="multipart/form-data", button_map={'submit_button': 'primary'}) }}
 
 </div>
 {% endblock %}

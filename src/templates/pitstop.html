@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="col-lg-12">
+            <h2>Please wait while we process your upload</h2>
+            <img src="{{ url_for('static', filename='loading.gif') }}" class="img-responsive" style="cursor: wait "/>
+        </div>
+    </div>
+    <meta http-equiv="refresh" content="0; url={{ url_for('aku', number=4) }}">
+{% endblock %}
