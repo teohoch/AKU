@@ -44,7 +44,7 @@ def create_config():
 	# Set the URL for the SVN Repository
 	config.add_section('SVN')
 	config.set('SVN', 'URL','https://svn.alma.cl/p2/trunk/ITS/config/CDB-COMMON/TMCDB_DATA/')
-	config.set('SVN', 'PATH_IN_REPO', 'TMCDB_DATA/')
+	config.set('SVN', 'PATH_IN_REPO', '')
 
 	# Set Configuration for SSH Connection
 	config.add_section('SSH')
@@ -72,12 +72,12 @@ def create_database():
 	# Copy seed file to Database Directory
 	copy2('aku_create.sql',join(config.get('Locations', 'Database')))
 
-parser = argparse.ArgumentParser()
+par = argparse.ArgumentParser()
 
 
-parser.add_argument('-d', dest='create_database', action='store_true', help='Create database for AKU')
-parser.add_argument('-wipe',dest='wipe', action='store_true', help='Erase Current AkuFiles, if they exist')
-parser = parser.parse_args()
+par.add_argument('-d', dest='create_database', action='store_true', help='Create database for AKU')
+par.add_argument('-wipe',dest='wipe', action='store_true', help='Erase Current AkuFiles, if they exist')
+parser = par.parse_args()
 
 if parser.create_database:
 	config.read(abspath(join(dirname(abspath(__file__)), 'Configuration/conf.ini')))

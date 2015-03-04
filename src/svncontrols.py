@@ -2,9 +2,10 @@ import pysvn
 from os import remove
 from os.path import isfile, join
 from shutil import copy2
-from secure_storage import SecureKey
 import filecmp
 import ConfigParser
+
+from secure_storage import SecureKey
 from diffchecker import show_differences
 
 
@@ -55,6 +56,7 @@ class AkuSvn():
 		:param filename:
 		:return: True -> add, False -> update
 		"""
+
 		return not isfile(join(self.destinationPath, self.pathInRepo, filename))
 
 	def __addFile(self, filepath, filename):
@@ -72,7 +74,8 @@ class AkuSvn():
 			copy2(join(filepath, filename), finalPosition)
 			self.client.add(finalPosition)
 			return True
-		except:
+		except Exception as e:
+			print e
 			return False
 
 	def __updateFile(self, filepath, filename):

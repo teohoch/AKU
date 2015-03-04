@@ -19,7 +19,7 @@ class XmlVerification():
 		self.conf_path = conf_path
 		self.filename = filename
 		self.device = device
-		self.SCHEMA_PATH = self.config.get('Locations', 'svnrepository')
+		self.SCHEMA_PATH = join(self.config.get('Locations', 'svnrepository'), self.config.get('SVN', 'path_in_repo'))
 
 	def xml_well_formed(self):
 		try:
@@ -40,7 +40,13 @@ class XmlVerification():
 
 	def validate_scheme(self):
 		db = Aku_Database(self.conf_path)
-		f = open(join(self.SCHEMA_PATH, (db.get_device_scheme(self.device))))
+		a = self.SCHEMA_PATH
+		b = db.get_device_scheme(self.device)
+		c = join(a,b)
+		print a
+		print b
+		print(c)
+		f = open(c)
 		schema_doc = etree.parse(f)
 		schema = etree.XMLSchema(schema_doc)
 

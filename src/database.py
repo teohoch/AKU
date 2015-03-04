@@ -171,4 +171,4 @@ class Aku_Database(Database):
 
 	def get_device_scheme(self, device):
 		command = "SELECT scheme_file FROM device WHERE name=='" + device+ "';"
-		return self.executeReadSQL(command)[0]
+		return self.executeReadSQL(command)[0][0]
