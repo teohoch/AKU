@@ -19,6 +19,8 @@ config = ConfigParser.ConfigParser()
 def create_directories():
 	if not isdir(join(AKU_Files, "AkuFiles/")):
 		mkdir(join(AKU_Files, "AkuFiles/"))
+	if not isdir(join(AKU_Files, "Configuration/")):
+		mkdir(join(AKU_Files, "Configuration/"))
 
 	for dire in directories_to_create:
 		if not isdir(join(AKU_Files, "AkuFiles/", dire)):
