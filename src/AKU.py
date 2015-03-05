@@ -151,10 +151,7 @@ def aku(number=1):
 		return loader(form)
 	elif number == 2:
 		form = SerialForm()
-		print form.validate_on_submit()
-		print 'hola'
 		if not form.validate_on_submit():
-			print session['device']
 			if session['device'] == 'IFProc':
 				return render_template('serialstop.html',form=form, upload=True)
 			else:
@@ -212,7 +209,7 @@ def aku(number=1):
 
 		if status:
 			svn = AkuSvn(app.config['CONFIGURATION_PATH'])
-			svn_status = svn.uploadToRepo(app.config['UPLOAD_FOLDER'], file_processed, current_user.username, force)
+			svn_status = svn.uploadToRepo(app.config['UPLOAD_FOLDER'], file_processed, current_user.username, force, session['ticket'])
 
 			if svn_status[1] and (svn_status[0] or force):
 				data = {

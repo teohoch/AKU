@@ -90,7 +90,7 @@ class AkuSvn():
 		else:
 			return False
 
-	def uploadToRepo(self, filepath, filename, user, force):
+	def uploadToRepo(self, filepath, filename, user, force, jira_ticket):
 		"""
 		Uploads the file to the repository
 		:param filepath: The path to the file to be uploaded
@@ -123,7 +123,7 @@ class AkuSvn():
 		if status and (force or doaction):
 			message = "The configuration file " + filename
 			action = ('added' if doaction else 'updated')
-			message += " has been " + action + ' by ' + user + ' according to '
+			message += " has been " + action + ' by ' + user + ' according to ' + str(jira_ticket)
 
 			try:
 				print self.client.checkin(self.destinationPath, message, recurse=True)
