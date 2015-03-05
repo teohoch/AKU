@@ -31,7 +31,7 @@ def show_differences(newfilename, oldfilename):
 			 '    </table>'
 	new_file = open(newfilename, 'r')
 	old_file = open(oldfilename, 'r')
-	diff = difflib.HtmlDiff(wrapcolumn=90).make_table(new_file.readlines(),old_file.readlines(),fromdesc=newfilename,todesc=oldfilename,context=True, numlines=1)
+	diff = difflib.HtmlDiff(wrapcolumn=90).make_table(fromlines=old_file.readlines(),tolines=new_file.readlines(),fromdesc=oldfilename,todesc=newfilename,context=True, numlines=1)
 
 	return style + diff + legend
 

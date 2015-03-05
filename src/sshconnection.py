@@ -23,8 +23,7 @@ def ssh_update_assemblies(ste, config_file, command):
 		stdin, stdout, stderr = client.exec_command(command)
 		# Wait for the command to terminate
 		while not stdout.channel.exit_status_ready():
-				for line in stdout.readlines():
-					print line
+				print "[updateAssemblies Output] " + str(stdout.readlines())
 		client.close()
 		return True
 	except:
@@ -34,6 +33,6 @@ def ssh_update_assemblies(ste, config_file, command):
 if __name__ == '__main__':
 	import os
 	path = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../Configuration/conf.ini'))
-	ssh_update_assemblies('AOS',path,'updateAssemblies -v')
+	ssh_update_assemblies('AOS',path,'updateAssemblies')
 
 
