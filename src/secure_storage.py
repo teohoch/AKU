@@ -23,7 +23,7 @@ SALT_SIZE = 8  # 64-bits of salt
 
 class SecureKey():
 	"""
-	This class provides a semi-secure way to store sensitive information, such as repository passwords asn usernames
+	This class provides a semi-secure way to store sensitive information, such as repository passwords and usernames
 	"""
 	def __init__(self, key, configPath):
 		"""
@@ -101,7 +101,9 @@ class SecureKey():
 		return cipher.decrypt(ciphertext).rstrip(' ')  # Decrypt and depad
 
 	def store(self, plaintext):
-		""" Store key-value pair safely and save to disk."""
+		""" Store key-value pair safely and save to disk.
+
+		"""
 		with open(self.passLocation + '.p', 'w') as f:
 			self.phrase = os.urandom(PASSPHRASE_SIZE) # Random passphrase
 			f.write(base64.b64encode(self.phrase))

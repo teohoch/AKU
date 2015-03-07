@@ -21,12 +21,7 @@ def validateLDAP(uid=None,username=None,password=None):
 
 		if username is not None and password is not None:
 			try:
-
-				# Ejecutar el Binding, aca deberia decirme cuando la contrasena esta equivocada, pero no los hace
 				ld.simple_bind_s('uid='+username+','+base_dn, password)
-				#Imprimo bajo que usuario estoy autentificado
-				#print ld.whoami_s()
-				#Genero un search para que me muestre el usuario
 				r = ld.search_s(base_dn, ldap.SCOPE_SUBTREE,'uid=%s' % (username))
 
 			except ldap.LDAPError, e:
@@ -51,6 +46,6 @@ def validateLDAP(uid=None,username=None,password=None):
 if __name__ == '__main__':
 
 
-	print validateLDAP_test(username="jreveco",password="mynewshinypass")
-	print validateLDAP_test(uid='1124')
+	print validateLDAP(username="jreveco",password="mynewshinypass")
+	print validateLDAP(uid='1124')
 

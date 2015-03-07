@@ -54,7 +54,7 @@ SELECT         'ColdCart3' AS name,   'ColdCart3' AS value ,    '^\d+.xml' AS re
 	UNION SELECT 'Mount',               'Mount',                  '^mount_[A-Z]{2}\d{2}.xml',   'mount_<Uppercase Antenna Name>.xml', 'mount'
 	UNION SELECT 'IFProc',              'IFProc',                 '^IFP_Cal.xml',               'IFP_Cal.xml',                        ''
 	UNION SELECT 'ACD',                 'ACD',                    '^[a-f\d]+.xml',              '<Lowercase Hexadecimal>.xml',        'ACD.xsd'
-	UNION SELECT 'DTX',                 'DTX',                    '^[a-f\d]+.xml',              '<Lowercase Hexadecimal>.xml',        'DTX.xsd'
+	UNION SELECT 'DTX',                 'DTX_new',                '^[a-f\d]+.xml',              '<Lowercase Hexadecimal>.xml',        'DTX.xsd'
 	UNION SELECT 'WVR',                 'WVR',                    '^[a-f\d]+.xml',              '<Lowercase Hexadecimal>.xml',        'WVR.xsd'
 	UNION SELECT 'PRD',                 'PRD',                    '^[a-f\d]+.xml',              '<Lowercase Hexadecimal>.xml',        'PDA.xds'
 	UNION SELECT 'MLD',                 'MLD',                    '^[a-f\d]+.xml',              '<Lowercase Hexadecimal>.xml',        'PDA.xsd'

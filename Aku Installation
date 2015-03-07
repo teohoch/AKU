@@ -1,0 +1,62 @@
+yum update
+adduser aku
+passwd aku
+yum groupisntall "Development Tools" "Web Server"
+yum install python-devel
+yum install libxslt-devel
+yum install openldap-devel
+yum install wget
+
+#install PIP
+wget https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
+
+#Enable epel Repos
+wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+rpm -Uvh epel-release*rpm
+
+#install pysvn
+yum install pysvn
+
+#install libyaml
+yum install libyaml
+
+#install Virtual Env Wrapper
+pip install virtualenvwrapper
+
+#Create virtualenv
+su aku
+
+#Add Virtual Env Wrapper to the shell
+vi ~/.bashrc
+# add the following line
+export WORKON_HOME=/home/aku/.virtualenv
+source /usr/bin/virtualenvwrapper.sh
+
+#reload shell
+source ~/.bash_profile
+
+#create virtualenv
+mkvirtualenv --system-site-packages AKU
+
+#Activate AKU Virtual Env
+workon AKU
+
+#Install packages in VirtualEnv
+pip install flask flask-wtf flask-bootstrap flask-login
+pip install pycrypto pbkdf2 lxml lxml python-ldap paramiko
+
+#Clone AKU into your system
+git clone https://github.com/teohoch/AKU.git
+cd AKU
+
+#Copy the RSA Key for ssh connectio to STEs to your prefered location
+#Run set.py to setup AKU. Follow the screen instructions
+python set.py
+
+#After setup, run AKU.py to check that everything works
+python src/AKU.py
+
+#If no error message is given, open a browser and connect to the host on the 5000 port. It should show the login screen
+
+

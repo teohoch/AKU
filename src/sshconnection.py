@@ -3,7 +3,7 @@ import ConfigParser
 import paramiko
 
 
-def ssh_update_assemblies(ste, config_file, command):
+def ssh_command(ste, config_file, command):
 	"""
 	Simple function that connects to the corresponding STE through SSH and runs the UpdateAssemblies command
 	:param ste: The STE where to update
@@ -33,6 +33,6 @@ def ssh_update_assemblies(ste, config_file, command):
 if __name__ == '__main__':
 	import os
 	path = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../Configuration/conf.ini'))
-	ssh_update_assemblies('AOS',path,'updateAssemblies')
+	ssh_command('AOS',path,'updateAssemblies')
 
 

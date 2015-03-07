@@ -79,6 +79,7 @@ par = argparse.ArgumentParser()
 
 par.add_argument('-d', dest='create_database', action='store_true', help='Create database for AKU')
 par.add_argument('-wipe',dest='wipe', action='store_true', help='Erase Current AkuFiles, if they exist')
+par.add_argument('-p', dest='password', action='store_true', help='Set new User and password for SVN')
 parser = par.parse_args()
 
 if parser.create_database:
@@ -94,6 +95,13 @@ elif parser.wipe:
 		config2 = ConfigParser.ConfigParser()
 		config2.read(abspath(join(dirname(abspath(__file__)), 'Configuration/conf.ini')))
 		rmtree(config2.get('Locations', 'AkuFiles'))
+elif parser.password:
+	if isfile(abspath(join(dirname(abspath(__file__)), 'Configuration/conf.ini'))):
+		config2 = ConfigParser.ConfigParser()
+		config2.read(abspath(join(dirname(abspath(__file__)), 'Configuration/conf.ini')))
+		rmtree(config2.get('Locations', 'securestorage'))
+		mkdir(config2.get('Locations', 'securestorage'))
+		SecureSetup('Configuration/conf.ini')
 else:
 	if parser.wipe:
 		if isfile(abspath(join(dirname(abspath(__file__)), 'Configuration/conf.ini'))):

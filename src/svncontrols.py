@@ -90,10 +90,10 @@ class AkuSvn():
 		else:
 			return False
 
-	def uploadToRepo(self, filepath, filename, user, force, jira_ticket):
+	def uploadToRepo(self, filedirectory, filename, user, force, jira_ticket):
 		"""
 		Uploads the file to the repository
-		:param filepath: The path to the file to be uploaded
+		:param filedirectory: The path to the directory where the file to be uploaded is.
 		:param filename: The name of the file to be uploaded
 		:param user: The username of the user uploading the file
 		:return: An array containing the action taken by Svn (add => True or update => False), the status of the action
@@ -108,17 +108,16 @@ class AkuSvn():
 		out_message = ''
 
 		if doaction:
-			status = self.__addFile(filepath, filename)
+			status = self.__addFile(filedirectory, filename)
 		else:
 			if force:
-				status = self.__updateFile(filepath, filename)
-				print 'with force ' + str(status)
+				status = self.__updateFile(filedirectory, filename)
 				if not status:
-					out_message = show_differences(join(filepath, filename), join(self.destinationPath,self.pathInRepo, filename))
+					out_message = show_differences(join(filedirectory, filename), join(self.destinationPath,self.pathInRepo, filename))
 			else:
-				status = not filecmp.cmp(join(filepath, filename), join(self.destinationPath, self.pathInRepo, filename))
+				status = not filecmp.cmp(join(filedirectory, filename), join(self.destinationPath, self.pathInRepo, filename))
 				if status:
-					out_message = show_differences(join(filepath, filename), join(self.destinationPath,self.pathInRepo, filename))
+					out_message = show_differences(join(filedirectory, filename), join(self.destinationPath,self.pathInRepo, filename))
 
 		if status and (force or doaction):
 			message = "The configuration file " + filename
@@ -127,7 +126,7 @@ class AkuSvn():
 
 			try:
 				print self.client.checkin(self.destinationPath, message, recurse=True)
-				remove(join(filepath, filename))
+				remove(join(filedirectory, filename))
 			except Exception as e:
 				print e
 

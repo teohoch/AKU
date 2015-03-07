@@ -1,0 +1,26 @@
+# as root, clone AKU into the html folder
+cd /var/www/html/
+git clone https://github.com/teohoch/AKU.git
+cd AKU
+
+#Copy the RSA Key for ssh connectio to STEs to your prefered location
+#Run set.py to setup AKU. Follow the screen instructions
+python set.py
+
+#Copy the apache configuration file included, to the apache configuration folder
+cp aku_apache.conf /etc/httpd/conf.d/
+
+#Edit httpd.conf so Apache runs as aku:aku (user:group)
+vim /etc/httpd/conf/httpd.conf
+
+#Find the lines
+	User apache
+	Group apache
+# And change them to 
+	User aku
+	Group aku
+#change ownership of AKU/ to aku
+chown -R aku:aku AKU/
+
+#restart Apache
+service httpd restart

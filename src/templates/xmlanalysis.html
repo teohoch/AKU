@@ -7,13 +7,14 @@
 <script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
 <script type=text/javascript>
     $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    document.getElementById("loading").style.display = 'none';
+    document.getElementById("content").style.display = "block";
     var loader = function (e) {
         document.getElementById("loading").style.display = 'block';
         document.getElementById("content").style.display = "none";
         return true
     };
-    document.getElementById("loading").style.display = 'none';
-    document.getElementById("content").style.display = "block";
+
 </script>
 
 <div class="container" id="loading">

@@ -12,13 +12,13 @@ from xmlProcessing.ifpProccesing import ifpgenerator
 
 
 class XmlVerification():
-	def __init__(self, conf_path, filename, name):
+	def __init__(self, conf_path, filepath, name):
 
 		self.config = ConfigParser.ConfigParser()
 		self.config.read(conf_path)
 
 		self.conf_path = conf_path
-		self.filename = filename
+		self.filename = filepath
 		self.name = name
 		self.device = self.get_device_from_xml()
 		self.SCHEMA_PATH = join(self.config.get('Locations', 'svnrepository'), self.config.get('SVN', 'path_in_repo'))

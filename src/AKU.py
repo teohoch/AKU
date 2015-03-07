@@ -9,7 +9,7 @@ from forms import *
 from xmlverification import XmlVerification
 from database import Aku_Database
 from svncontrols import AkuSvn
-from sshconnection import ssh_update_assemblies
+from sshconnection import ssh_command
 from ldapconnection import validateLDAP as ld
 from helpers import *
 import config
@@ -137,7 +137,7 @@ def favicon():
 
 @app.route('/update/')
 def enforce_update():
-	return str(ssh_update_assemblies('AOS', app.config['CONFIGURATION_PATH'], 'ls'))
+	return str(ssh_command('AOS', app.config['CONFIGURATION_PATH'], 'ls'))
 
 
 @app.route('/')
@@ -222,7 +222,7 @@ def aku(number=1):
 					'username': current_user.username}
 				db_status = db.add_upload(data)
 
-				ssh_status = ssh_update_assemblies(session['ste'], app.config['CONFIGURATION_PATH'], 'updateAssemblies')
+				ssh_status = ssh_command(session['ste'], app.config['CONFIGURATION_PATH'], 'updateAssemblies')
 
 		uploaded = status and svn_status[1]
 		registered = uploaded and db_status
@@ -235,19 +235,7 @@ def aku(number=1):
 		                       force=force, form=form, completed=completed)
 
 
-@app.route('/_add_numbers', methods=['GET', 'POST'])
-def add_numbers():
-	sleep(5)
-	return 'Wake Up!'
 
-
-@app.route('/test')
-def test():
-	form = TicketForm()
-
-	form.Device.choices = devices
-	form.STE.choices = select_field_transform(ste)
-	return render_template('ajaxtest.html', form=form)
 
 
 if __name__ == '__main__':
