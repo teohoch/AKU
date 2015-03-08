@@ -4,7 +4,7 @@
 {% block body %}
 	<link rel="stylesheet" href="{{url_for('.static', filename='general.css')}}">
 
-		<div class='navbar navbar-default navbar-static-top' style="background-color: #98dbcc">
+		<div class='navbar navbar-default navbar-static-top' style="background-color: #E9ECF1">
         <div class="container">
             <div class="row" >
             	<div class="container col-lg-2 bottom-column">
@@ -12,6 +12,8 @@
                 </div>
 				<div class="container col-lg-5 bottom-column">
                     <ul class="nav nav-tabs nav-justified">
+                    <h1>Automatic Configuration Files Uploader (AKU)</h1>
+
 						<li role="presentation"{% if upload %} class="active"{% endif %}><a href="/">Home</a></li>
 						<li role="presentation" {% if home %} class="active"{% endif %}><a href="/history/">History</a></li>
 

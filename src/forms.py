@@ -13,8 +13,8 @@ from customValidators import *
 
 
 class LoginForm(Form):
-	username = StringField('Username', [validators.DataRequired()])
-	password = PasswordField('Password', [validators.DataRequired()])
+	username = StringField('STE Username', [validators.DataRequired()])
+	password = PasswordField('STE Password', [validators.DataRequired()])
 	submit_button = SubmitField('Log In')
 
 
